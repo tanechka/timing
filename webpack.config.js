@@ -2,38 +2,34 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+const PORT = process.env.PORT || 8888;
 
 module.exports = {
     entry: [
         `webpack-dev-server/client?http://${HOST}:${PORT}`,
-        `webpack/hot/only-dev-server`,
-        `./src/index.jsx` // Your appʼs entry point
+        `webpack/hot/only-dev-server`, //without refresh
+        `./src/index.js` // Your appʼs entry point
      ],
     output: {
         path: './build',
         filename: 'scripts/app.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js']
     },
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 exclude: /(node_modules|bower_components|public)/,
-                loaders: ['react-hot-loader/webpack']
+                loaders: [ "babel-loader", "eslint-loader" ]
             },
             {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components|public)/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015', 'react'],
-                    plugins: ['transform-runtime', 'transform-decorators-legacy', 'transform-class-properties'],
-                }
+               test: /\.scss$/,
+               loaders: ["style", "css", "sass"]
             }
         ]
     },
@@ -47,7 +43,7 @@ module.exports = {
         inline: true,
         // serve index.html in place of 404 responses to allow HTML5 history
         historyApiFallback: true,
-        port: PORT,
+        port: PORT - 1,
         host: HOST
     },
     plugins: [
@@ -55,6 +51,21 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
-        })
+        }),
+        new BrowserSyncPlugin({
+          host: 'localhost',
+          port: PORT,
+          proxy: {
+            target: 'http://localhost:' + (PORT - 1) + '/',
+            ws: true
+          }
+        },
+        // plugin options
+        {
+          // prevent BrowserSync from reloading the page
+          // and let Webpack Dev Server take care of this
+          reload: false
+        }
+      )
     ]
 };
