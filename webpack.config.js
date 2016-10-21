@@ -11,7 +11,7 @@ module.exports = {
     entry: [
         `webpack-dev-server/client?http://${HOST}:${PORT}`,
         `webpack/hot/only-dev-server`, //without refresh
-        `./src/index.js` // Your appʼs entry point
+        `./src/app/index.js` // Your appʼs entry point
      ],
     output: {
         path: './build',
@@ -50,7 +50,7 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/app/index.html'
         }),
         new BrowserSyncPlugin({
           host: 'localhost',
