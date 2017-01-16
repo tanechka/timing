@@ -1,0 +1,81 @@
+$background-left-bar: #394e63;
+$grey: #e1e6ec;
+$text-color-title: #c7cdd3;
+$shadow-color-title: #959a9e;
+$text-color: #4f6173;
+$range-color: #4f6173;
+
+$width-left-bar: 70px;
+
+.calculator-header {
+  left: $width-left-bar;
+  overflow: hidden;
+  background: $grey;
+  color: $text-color;
+  height: $width-left-bar;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 3;
+
+
+  &-title {
+    margin: 0;
+    line-height: 56px;
+    font-size: 24px;
+    color: $text-color-title;
+    text-shadow: -1px -1px 0px $shadow-color-title;
+  }
+
+  .total {
+    &-title {
+      font-size: 18px;
+      margin: 0;
+      line-height: 56px;
+      text-transform: uppercase;
+    }
+  }
+
+  .value {
+    font-size: 12px;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+  }
+
+  .range,
+  .price-internal,
+  .price-final {
+    font-size: 10px;
+    display: block;
+    margin-top: -1px;
+    text-align: center;
+  }
+
+  .title {
+    margin: 0 0 2px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  .calculator-header-item {
+    padding: 0 20px;
+  }
+
+  .InputRange {
+    margin-top: 5px;
+  }
+
+  .InputRange-labelContainer {
+    display: none;
+  }
+
+  .InputRange-slider {
+    background: $range-color;
+    border-color: $range-color;
+  }
+  
+  .InputRange-track {
+    background: #fff;
+  }
+}

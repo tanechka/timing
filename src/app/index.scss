@@ -1,0 +1,35 @@
+html,
+body,
+#app,
+.content,
+.wrap {
+  height: 100%;
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  background: #eeeeee;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.right-content {
+  background: #ccd3db;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  width: 290px;
+}

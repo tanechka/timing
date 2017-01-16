@@ -1,11 +1,17 @@
 import React from 'react';
-import {render} from 'react-dom';
-import '../styles/main.scss'
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import reducer from './reducers';
+import './normolize.scss';
+import './index.scss';
 
-class App extends React.Component {
-    render () {
-        return <p> Hello React!!!!!!!!!</p>;
-    }
-}
+let store = createStore(reducer)
 
-render(<App/>, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+)

@@ -7,6 +7,9 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 8888;
 
+var devFlagPlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+});
 module.exports = {
     entry: [
         `webpack-dev-server/client?http://${HOST}:${PORT}`,
@@ -30,6 +33,17 @@ module.exports = {
             {
                test: /\.scss$/,
                loaders: ["style", "css", "sass"]
+            },
+            {
+               test: /\.css$/,
+               loaders: ["style", "css", "sass"]
+            },
+            {
+              test: /\.(jpe?g|png|gif|svg)$/i,
+              loaders: [
+                'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+              ]
             }
         ]
     },
@@ -49,6 +63,8 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        devFlagPlugin,
+
         new HtmlWebpackPlugin({
             template: './src/app/index.html'
         }),

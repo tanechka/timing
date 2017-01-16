@@ -1,0 +1,26 @@
+$background-left-bar: #394e63;
+$blue: #3498db;
+
+$width-left-bar: 70px;
+
+.left-bar {
+  width: $width-left-bar;
+  background: $background-left-bar;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+
+  .logo,
+  .link {
+    display: block;
+    width: $width-left-bar;
+    height: $width-left-bar;
+    background: url("../../../assets/images/logo.png") no-repeat;
+  }
+
+  .link {
+    background: url("../../../assets/images/calculator.png") center no-repeat;
+    width: 66px;
+    border-left: 4px solid $blue;
+  }
+}
