@@ -6,22 +6,44 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 8888;
+const ROOT_PATH = path.resolve('./src');
 
-var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
+const DEBUG = !(process.argv.indexOf('--release') > -1);
+const VERBOSE = process.argv.indexOf('--verbose') > -1;
+
+const GLOBALS = {
+    'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
+    __DEV__: DEBUG,
+};
+
 module.exports = {
     entry: [
         `webpack-dev-server/client?http://${HOST}:${PORT}`,
-        `webpack/hot/only-dev-server`, //without refresh
-        `./src/app/index.js` // Your appʼs entry point
-     ],
+        'webpack/hot/only-dev-server', //without refresh
+        path.resolve('./src/app/index.js') // Your appʼs entry point
+    ],
+    cache: DEBUG,
+    debug: DEBUG,
+    stats: {
+        colors: true,
+        reasons: DEBUG,
+        hash: VERBOSE,
+        version: VERBOSE,
+        timings: true,
+        chunks: VERBOSE,
+        chunkModules: VERBOSE,
+        cached: VERBOSE,
+        cachedAssets: VERBOSE,
+    },
+    devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
     output: {
         path: './build',
         filename: 'scripts/app.js'
     },
     resolve: {
-        extensions: ['', '.js']
+        root: [
+            ROOT_PATH
+        ]
     },
     module: {
         loaders: [
@@ -32,17 +54,17 @@ module.exports = {
             },
             {
                test: /\.scss$/,
-               loaders: ["style", "css", "sass"]
+               loaders: ["style", "css", "sass"]//.map(showSourceMap)
             },
             {
                test: /\.css$/,
-               loaders: ["style", "css", "sass"]
+               loaders: ["style", "css"]//.map(showSourceMap)
             },
             {
               test: /\.(jpe?g|png|gif|svg)$/i,
               loaders: [
                 'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                // 'image-webpack?bypassOnDebug'
               ]
             }
         ]
@@ -60,11 +82,16 @@ module.exports = {
         port: PORT - 1,
         host: HOST
     },
+    sassLoader: {
+        outputStyle: 'expanded',
+        includePaths: [
+            ROOT_PATH
+        ]
+    },
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        devFlagPlugin,
-
+        new webpack.DefinePlugin(GLOBALS),
         new HtmlWebpackPlugin({
             template: './src/app/index.html'
         }),
@@ -85,3 +112,11 @@ module.exports = {
       )
     ]
 };
+
+
+function showSourceMap(entry) {
+    if (entry == 'style') {
+        return entry;
+    }
+    return entry + (DEBUG ? '?sourceMap' : '');
+}

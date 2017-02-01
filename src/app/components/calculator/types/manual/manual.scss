@@ -1,10 +1,4 @@
-$text-color: #4f6173;
-$btn-color: #969ead;
-$input-color: #abb3c2;
-$blue: #3498db;
-$green: #2ecc71;
-$white: #fff;
-$mint: #1abc9c;
+@import "app/variables";
 
 .manual {
   overflow: hidden;
@@ -25,14 +19,15 @@ $mint: #1abc9c;
       }
 
       .link {
-        &--search{
+        &--close {
           display: inline-block;
           background: url("../../../../../assets/images/delete.png") no-repeat;
           width: 13px;
-          height: 100%;
+          height: 13px;
           background-position: center;
           vertical-align: middle;
         }
+
       }
     }
   }
@@ -48,55 +43,6 @@ $mint: #1abc9c;
   }
 
   .manual-specific {
-    .manual-item {
-      width: 90px;
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      height: 30px;
-      color: #fff;
-      margin: 0 auto;
-
-      .value {
-        background: $input-color;
-        border: none;
-        width: 28px;
-        position: absolute;
-        left: 30px;
-        bottom: 0;
-        top: 0;
-        text-align: center;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .button {
-        width: 30px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: $btn-color;
-        border: 0;
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 28px;
-
-        &--increase {
-          left:0;
-        }
-
-        &--decrease {
-          right: 0;
-        }
-
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-
     .view {
       width: 20px;
       height: 20px;

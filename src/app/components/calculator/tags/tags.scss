@@ -34,53 +34,5 @@ $input-color: #abb3c2;
       border-radius: 15px;
     }
 
-    &-item {
-      width: 90px;
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      height: 30px;
-      color: #fff;
-      margin-left: 60px;
-      
-      .value {
-        background: $input-color;
-        border: none;
-        width: 28px;
-        position: absolute;
-        left: 30px;
-        bottom: 0;
-        top: 0;
-        text-align: center;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .button{
-        width: 30px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: $btn-color;
-        border: 0;
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 28px;
-
-        &--increase {
-          left:0;
-        }
-
-        &--decrease {
-          right: 0;
-        }
-
-        &:focus {
-          outline: none;
-        }
-      }
-    }
   }
 }
