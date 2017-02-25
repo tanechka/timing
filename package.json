@@ -17,6 +17,7 @@
     "normalize.css": "^5.0.0",
     "path": "^0.12.7",
     "react": "^15.3.2",
+    "react-component-redux": "^0.4.2",
     "react-dom": "^15.3.2",
     "react-input-range": "^0.9.3",
     "react-redux": "^4.4.5",
