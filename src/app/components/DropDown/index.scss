@@ -1,0 +1,31 @@
+@import "app/variables";
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-section {
+  position: absolute;
+  border: 1px solid #eee;
+  background: $mint;
+  z-index: 2;
+  top: 35px;
+  left: 0;
+
+  .dropdown-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      color: #fff;
+      font-size: 15px;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      min-width: 210px;
+      cursor: pointer;
+    }
+  }
+}

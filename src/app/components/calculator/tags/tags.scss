@@ -2,6 +2,9 @@ $title-color: #4f6173;
 $blue: #3498db;
 $btn-color: #969ead;
 $input-color: #abb3c2;
+$yellow: #d35400;
+$orange: #e67e22;
+$red: #e74c3c;
 
 .calculator-tags {
   overflow: hidden;
@@ -34,5 +37,19 @@ $input-color: #abb3c2;
       border-radius: 15px;
     }
 
+    &.blue .title{
+      background: $blue;
+    }
+
+    &.yellow .title{
+      background: $yellow;
+    }
+
+    &.orange .title{
+      background: $orange;
+    }
+    &.red .title{
+      background: $red;
+    }
   }
 }

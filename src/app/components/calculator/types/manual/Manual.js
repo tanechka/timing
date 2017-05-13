@@ -1,13 +1,28 @@
 import React from 'react'
 import ManualItem from './manualItem/ManualItem.js'
-import './manual.scss'
+import './manual.scss';
+import DropDown from 'app/components/DropDown';
 
 const Manual = () => (
   <section className="manual">
     <table className="table">
       <thead>
         <tr>
-          <th colSpan="2"><h2 className="title">Проектирование</h2></th>
+          <th colSpan="2">
+            <h2 className="title">
+            <DropDown
+             className="actions"
+              label={<span className="icon-setting"></span>}
+              >
+              <li onClick={() => console.log('delete')}>
+                удалить
+              </li>
+              <li onClick={() => console.log('copy')}>
+                копировать
+              </li>
+            </DropDown>
+            Проектирование</h2>
+          </th>
           <th>20</th>
           <th>350</th>
           <th>700</th>

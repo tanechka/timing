@@ -37,9 +37,22 @@
     margin: 0 0 5px;
     font-size: 25px;
     text-align: left;
-    background: url("../../../../../assets/images/setting.png") no-repeat;
+    position: relative;
     background-position: left center;
     padding-left: 25px;
+
+    .actions {
+      position: absolute;
+      left: 0;
+      cursor: pointer;
+    }
+
+    .icon-setting {
+      background: url("../../../../../assets/images/setting.png") no-repeat;
+      width: 15px;
+      height: 15px;
+      display: block;
+    }
   }
 
   .manual-specific {
@@ -71,5 +84,9 @@
         background: $white;
       }
     }
+  }
+
+  .link--close {
+    cursor: pointer;
   }
 }

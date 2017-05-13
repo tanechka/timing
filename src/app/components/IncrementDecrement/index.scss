@@ -32,8 +32,9 @@
     background: $btn-color;
     border: 0;
     font-size: 22px;
-    font-weight: 700;
-    line-height: 28px;
+    line-height: 21px;
+    color: white;
+    cursor: pointer;
 
     &--increase {
       left:0;
