@@ -2,6 +2,8 @@ import React from 'react'
 import ManualItem from './manualItem/ManualItem.js'
 import './manual.scss';
 import DropDown from 'app/components/DropDown';
+import ClickEditable from  'app/components/ClickEditable';
+import CircleColorPicker from 'app/components/CircleColorPicker';
 
 const Manual = () => (
   <section className="manual">
@@ -10,22 +12,23 @@ const Manual = () => (
         <tr>
           <th colSpan="2">
             <h2 className="title">
-            <DropDown
-             className="actions"
-              label={<span className="icon-setting"></span>}
-              >
-              <li onClick={() => console.log('delete')}>
-                удалить
-              </li>
-              <li onClick={() => console.log('copy')}>
-                копировать
-              </li>
-            </DropDown>
-            Проектирование</h2>
+              <DropDown
+               className="actions"
+                label={<span className="icon-setting"></span>}
+                >
+                <li onClick={() => console.log('delete')} className="list-item">
+                  удалить
+                </li>
+                <li onClick={() => console.log('copy')} className="list-item">
+                  копировать
+                </li>
+              </DropDown>
+              <ClickEditable onChange={() => console.log('edit')} value="Проектирование" />
+            </h2>
           </th>
           <th>20</th>
-          <th>350</th>
-          <th>700</th>
+          <th><ClickEditable onChange={() => console.log('edit')} value="350" /></th>
+          <th><ClickEditable onChange={() => console.log('edit')} value="700" /></th>
           <th>5700</th>
           <th>10700</th>
         </tr>

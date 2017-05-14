@@ -7,7 +7,7 @@ const Tags = () => (
     <h2 className="title">Типы работ</h2>
 
     <Tag type="calculator-tag blue pull-left" />
-    <Tag type="calculator-tag yellow pull-left" />
+    <Tag type="calculator-tag green pull-left" />
     <Tag type="calculator-tag orange pull-left" />
     <Tag type="calculator-tag red pull-left" />
   </section>

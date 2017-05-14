@@ -1,0 +1,27 @@
+.edit-input {
+  display: inline-block;
+
+  div {
+    display: inline-block;
+    border-bottom: 1px solid #4f6173;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+td, th {
+  .edit-input {
+
+    div {
+      max-width: 50px;
+    }
+  }
+}
+
+h2 .edit-input {
+  div {
+    max-width: 200px;
+  }
+}
