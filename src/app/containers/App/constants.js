@@ -1,4 +1,4 @@
-export const REDUCER_NAME = 'APP';
+export const REDUCER_NAME = 'APP'
 
 // ActionTypes
-export const CHECK_WORKiNG = `${REDUCER_NAME}/CHECK_WORKiNG`;
+export const CHECK_WORKING = `${REDUCER_NAME}/CHECK_WORKiNG`

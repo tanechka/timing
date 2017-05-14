@@ -1,7 +1,7 @@
-import * as ActionTypes from './constants';
+import * as ActionTypes from './constants'
 
-export function checkWorking() {
-    return {
-        type: ActionTypes.CHECK_WORKiNG
-    }
+export function checkWorking () {
+  return {
+    type: ActionTypes.CHECK_WORKING
+  }
 }

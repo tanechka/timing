@@ -1,3 +1,3 @@
-export function timestamp(state) {
-    return state.get('timestamp');
+export function timestamp (state) {
+  return state.get('timestamp')
 }

@@ -99,7 +99,9 @@
     }
   },
   "standard": {
-    "ignore": ["webpack-public-path.js"],
+    "ignore": [
+      "webpack-public-path.js"
+    ],
     "parser": "babel-eslint"
   }
 }

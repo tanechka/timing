@@ -1,12 +1,12 @@
-import React from 'react';
-import './percentage.scss';
+import React from 'react'
+import './percentage.scss'
 
 const Percentage = () => (
-  <section className="percentage panel">
-    <table className="table">
-      <thead className="panel-heading">
+  <section className='percentage panel'>
+    <table className='table'>
+      <thead className='panel-heading'>
         <tr>
-          <th colSpan="2"><h2 className="title">Техническое задание</h2></th>
+          <th colSpan='2'><h2 className='title'>Техническое задание</h2></th>
           <th>20</th>
           <th>350</th>
           <th>700</th>
@@ -17,9 +17,9 @@ const Percentage = () => (
       <tbody>
         <tr>
           <td>
-            <a className="link--search" />
-            <span className="type">Работа</span>
-            <span className="view"></span>
+            <a className='link--search' />
+            <span className='type'>Работа</span>
+            <span className='view' />
           </td>
           <td>Количество</td>
           <td>Время</td>
@@ -33,4 +33,4 @@ const Percentage = () => (
   </section>
 )
 
-export default Percentage;
+export default Percentage

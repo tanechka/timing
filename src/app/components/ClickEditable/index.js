@@ -1,14 +1,14 @@
-import React from 'react';
-import './index.scss';
-let ContentEditable = require("react-contenteditable");
+import React from 'react'
+import './index.scss'
+let ContentEditable = require('react-contenteditable')
 
 export default class ClickEditable extends React.PureComponent {
   state = {
     editing: false
   }
 
-  componentWillMount() {
-    this.state.text = this.props.value;
+  componentWillMount () {
+    this.state.text = this.props.value
   }
 
   edit = () => {
@@ -16,9 +16,7 @@ export default class ClickEditable extends React.PureComponent {
   }
 
   handleChange = (event) => {
-    var nonNumericRegex = /[^0-9.]+/g;
-
-    this.setState({text: event.target.value});
+    this.setState({text: event.target.value})
   }
 
   renderEditable = () => {
@@ -33,7 +31,7 @@ export default class ClickEditable extends React.PureComponent {
     )
   }
 
-  render() {
-    return this.renderEditable();
+  render () {
+    return this.renderEditable()
   }
 }
