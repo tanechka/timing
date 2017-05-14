@@ -83,6 +83,7 @@
     "replace": "0.3.0",
     "rimraf": "2.5.4",
     "sass-loader": "4.1.0",
+    "standard": "^10.0.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "2.2.1",
@@ -96,5 +97,9 @@
       "\\.(css|scss)$": "identity-obj-proxy",
       "^.+\\.(gif|ttf|eot|svg|woff|woff2|ico)$": "<rootDir>/tools/fileMock.js"
     }
+  },
+  "standard": {
+    "ignore": ["webpack-public-path.js"],
+    "parser": "babel-eslint"
   }
 }
