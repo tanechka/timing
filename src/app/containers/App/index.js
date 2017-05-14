@@ -7,11 +7,12 @@ import Tags from '../../components/calculator/tags/Tags'
 import Manual from '../../components/calculator/types/manual/Manual'
 import Percentage from '../../components/calculator/types/percentage/Percentage'
 import reducers from './reducers'
-import { REDUCER_NAME } from './constants'
+import * as constants from './constants'
+import * as CalculatorTypes from '../../constants/CalculatorTypes';
 import * as actions from './actions'
 import * as selectors from './selectors'
 
-RCR.reducers.add(REDUCER_NAME, reducers)
+RCR.reducers.add(constants.REDUCER_NAME, reducers)
 
 const Style = {
   wrap: {
@@ -25,12 +26,12 @@ const Style = {
 
 class App extends React.Component {
   static propTypes = {
+    calculators: React.PropTypes.object.isRequired,
     timestamp: React.PropTypes.number,
     checkWorking: React.PropTypes.func
   }
 
   componentWillMount () {
-    console.log(this.props.timestamp)
     this.props.checkWorking()
   }
 
@@ -41,17 +42,41 @@ class App extends React.Component {
         <div style={Style.content}>
           <Header />
           <Tags />
-          <Manual />
-          <Percentage />
+          {
+            this.props.calculators.map(renderCalculator)
+          }
         </div>
       </div>
     )
   }
 }
 
+function renderCalculator (calculator, index) {
+  let Calculator
+
+  switch (calculator.get('type')) {
+    case CalculatorTypes.MANUAL: {
+      Calculator = Manual
+      break
+    }
+    case CalculatorTypes.PERCENTAGE: {
+      Calculator = Percentage
+      break
+    }
+  }
+
+  return (
+    <Calculator
+      data={calculator}
+      key={index}
+    />
+  )
+}
+
 export default connect(
   state => ({
-    timestamp: selectors.timestamp(state[REDUCER_NAME])
+    calculators: selectors.calculators(state[constants.REDUCER_NAME]),
+    timestamp: selectors.timestamp(state[constants.REDUCER_NAME])
   }),
   actions
 )(App)

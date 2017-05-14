@@ -1,9 +1,8 @@
 import { fromJS } from 'immutable'
 import * as ActionTypes from './constants'
+import mock from './mock'
 
-const initialState = fromJS({
-  timestamp: Date.now()
-})
+const initialState = fromJS(mock)
 
 export default function (state = initialState, action) {
   switch (action.type) {
