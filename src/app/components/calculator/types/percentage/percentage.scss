@@ -19,10 +19,9 @@ $mint: #1abc9c;
 
       &:first-child {
         text-align: left;
-
-
+        padding-left: 20px;
       }
-      
+
       & .type {
         display: inline-block;
         margin-left: 10px;
@@ -46,7 +45,7 @@ $mint: #1abc9c;
   .title {
     color: $text-color;
     margin: 0 0 5px;
-    font-size: 25px;
+    font-size: 21px;
     text-align: left;
     background: url("../../../../../assets/images/setting.png") no-repeat;
     background-position: left center;

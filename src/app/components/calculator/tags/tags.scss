@@ -12,8 +12,9 @@ $red: #f44336;
 
   .title {
     color: $title-color;
-    margin: 0 0 20px;
-    font-size: 25px;
+    margin: 0;
+    font-size: 21px;
+    font-weight: normal;
   }
 
   .calculator-tag {
@@ -25,7 +26,7 @@ $red: #f44336;
     .title {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 15%;
       background: $blue;
       display: block;
       text-align: center;

@@ -13,10 +13,10 @@ $width-left-bar: 70px;
   background: $grey;
   color: $text-color;
   height: $width-left-bar;
-  padding: 10px 20px;
+  padding: 0  0 0 20px;
   box-sizing: border-box;
   z-index: 3;
-
+  margin-bottom: 20px;
 
   &-title {
     margin: 0;
@@ -24,6 +24,7 @@ $width-left-bar: 70px;
     font-size: 24px;
     color: $text-color-title;
     text-shadow: -1px -1px 0px $shadow-color-title;
+    padding-top: 10px;
   }
 
   .total {
@@ -60,6 +61,9 @@ $width-left-bar: 70px;
 
   .calculator-header-item {
     padding: 0 20px;
+    padding-top: 10px;
+    min-height: 60px;
+    border-left: 1px solid #fff;
   }
 
   .InputRange {
@@ -74,7 +78,7 @@ $width-left-bar: 70px;
     background: $range-color;
     border-color: $range-color;
   }
-  
+
   .InputRange-track {
     background: #fff;
   }

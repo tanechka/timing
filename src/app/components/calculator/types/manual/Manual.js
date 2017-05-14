@@ -6,9 +6,10 @@ import ClickEditable from  'app/components/ClickEditable';
 import CircleColorPicker from 'app/components/CircleColorPicker';
 
 const Manual = () => (
-  <section className="manual">
+  <section className="manual panel">
+
     <table className="table">
-      <thead>
+      <thead className="panel-heading">
         <tr>
           <th colSpan="2">
             <h2 className="title">
@@ -34,7 +35,7 @@ const Manual = () => (
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className="panel-sub-heading">
           <td>Работа</td>
           <td>Количество</td>
           <td>Время</td>

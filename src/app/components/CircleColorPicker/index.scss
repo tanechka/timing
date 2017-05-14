@@ -2,6 +2,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center;
 
   li {
     width: 20px;
@@ -10,8 +11,8 @@
     transition: transform 100ms ease;
     border-radius: 15px;
     cursor: pointer;
-    float: left;
-    margin: 15px 5px;
+    display: inline-block;
+    margin: 10px 5px;
 
     &:hover {
       transform: scale(1.2);

@@ -2,9 +2,9 @@ import React from 'react';
 import './percentage.scss';
 
 const Percentage = () => (
-  <section className="percentage">
+  <section className="percentage panel">
     <table className="table">
-      <thead>
+      <thead className="panel-heading">
         <tr>
           <th colSpan="2"><h2 className="title">Техническое задание</h2></th>
           <th>20</th>

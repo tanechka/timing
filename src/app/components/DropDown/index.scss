@@ -6,6 +6,7 @@
 }
 
 .dropdown-section {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   position: absolute;
   border: 1px solid #eee;
   background: white;
@@ -18,7 +19,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    min-width: 120px;
+    min-width: 140px;
 
     .list-item {
   //    color: #fff;
@@ -28,5 +29,14 @@
       min-width: 210px;
       cursor: pointer;
     }
+  }
+
+  &:after{
+    content: " ";
+    position: absolute;
+    left: 13px;
+    top: -14px;
+    border: 7px solid transparent;
+    border-bottom: 7px solid #fff;
   }
 }

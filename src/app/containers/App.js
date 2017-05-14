@@ -12,8 +12,7 @@ const Style = {
     },
     content: {
         background: '#eeeeee',
-        marginLeft: 70,
-        marginRight: 290
+        marginLeft: 70
     }
 };
 
@@ -33,8 +32,6 @@ export default class App extends React.Component {
                     <Tags />
                     <Manual />
                     <Percentage />
-                </div>
-                <div className="right-content">
                 </div>
             </div>
         )

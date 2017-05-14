@@ -1,7 +1,6 @@
 @import "app/variables";
 
 .manual {
-//  overflow: hidden;
   padding: 0 20px;
   border-left: 7px solid $mint;
 
@@ -16,6 +15,7 @@
 
       &:first-child {
         text-align: left;
+        padding-left: 20px;
       }
 
       .link {
@@ -34,8 +34,8 @@
 
   .title {
     color: $text-color;
-    margin: 0 0 5px;
-    font-size: 25px;
+    margin: 0;
+    font-size: 21px;
     text-align: left;
     position: relative;
     background-position: left center;
