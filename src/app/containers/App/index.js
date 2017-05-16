@@ -28,22 +28,27 @@ class App extends React.Component {
   static propTypes = {
     calculators: React.PropTypes.object.isRequired,
     timestamp: React.PropTypes.number,
-    checkWorking: React.PropTypes.func
+    checkWorking: React.PropTypes.func,
+    addCalculator: React.PropTypes.func,
+    removeCalculator: React.PropTypes.func
   }
 
   componentWillMount () {
+    console.log(this.props)
     this.props.checkWorking()
   }
 
   render () {
     return (
       <div style={Style.wrap}>
-        <LeftBar />
+        <LeftBar addCalculator={this.props.addCalculator}/>
         <div style={Style.content}>
           <Header />
           <Tags />
           {
-            this.props.calculators.map(renderCalculator)
+            this.props.calculators.map((calculator, index) => {
+              return renderCalculator(calculator, index, this.props.removeCalculator);
+            })
           }
         </div>
       </div>
@@ -51,7 +56,7 @@ class App extends React.Component {
   }
 }
 
-function renderCalculator (calculator, index) {
+function renderCalculator (calculator, index, removeCalculator) {
   let Calculator
 
   switch (calculator.get('type')) {
@@ -67,6 +72,7 @@ function renderCalculator (calculator, index) {
 
   return (
     <Calculator
+      removeCalculator={removeCalculator.bind(null, index)}
       data={calculator}
       key={index}
     />

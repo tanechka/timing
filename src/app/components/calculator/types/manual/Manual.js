@@ -4,7 +4,7 @@ import './manual.scss'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 
-const Manual = () => (
+const Manual = ({removeCalculator}) => (
   <section className='manual panel'>
 
     <table className='table'>
@@ -16,7 +16,7 @@ const Manual = () => (
                 className='actions'
                 label={<span className='icon-setting' />}
                 >
-                <li onClick={() => console.log('delete')} className='list-item'>
+                <li onClick={removeCalculator} className='list-item'>
                   удалить
                 </li>
                 <li onClick={() => console.log('copy')} className='list-item'>

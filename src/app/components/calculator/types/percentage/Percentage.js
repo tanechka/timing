@@ -1,7 +1,7 @@
 import React from 'react'
 import './percentage.scss'
 
-const Percentage = () => (
+const Percentage = ({removeCalculator}) => (
   <section className='percentage panel'>
     <table className='table'>
       <thead className='panel-heading'>
@@ -17,7 +17,7 @@ const Percentage = () => (
       <tbody>
         <tr>
           <td>
-            <a className='link--search' />
+            <a className='link--search' onClick={removeCalculator}/>
             <span className='type'>Работа</span>
             <span className='view' />
           </td>
