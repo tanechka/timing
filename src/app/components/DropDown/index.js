@@ -18,11 +18,14 @@ export default class DropDown extends React.PureComponent {
         </div>
         {
           this.state.open
-          ? <div className='dropdown-section'>
-            <ul onClick={this.toggleOpen} className='dropdown-list'>
-              {this.props.children}
-            </ul>
-          </div>
+          ? <div onClick={this.toggleOpen}>
+              <div className="dropdown-overlay"></div>
+              <div className='dropdown-section'>
+                <ul className='dropdown-list'>
+                  {this.props.children}
+                </ul>
+              </div>
+            </div>
           : null
         }
 

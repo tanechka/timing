@@ -10,7 +10,7 @@
   position: absolute;
   border: 1px solid #eee;
   background: white;
-  z-index: 2;
+  z-index: 200;
   top: 35px;
   left: 0;
 
@@ -39,4 +39,13 @@
     border: 7px solid transparent;
     border-bottom: 7px solid #fff;
   }
+}
+
+.dropdown-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
 }
