@@ -12,9 +12,19 @@ export default {
         {
           name: 'Простая',
           count: 20,
-          time: 2,
-          hourPrice1: 350,
-          hourPrice2: 700
+          hours: 2
+        },
+        {
+          name: 'Нормальная',
+          count: 5,
+          hours: 4
+        },
+        {
+          name: 'Сложная',
+          count: 10,
+          hours: 16,
+          hourPrice1: 550,
+          hourPrice2: 900
         }
       ]
     }),

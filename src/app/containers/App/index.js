@@ -7,12 +7,15 @@ import Tags from '../../components/calculator/tags/Tags'
 import Manual from '../../components/calculator/types/manual/Manual'
 import Percentage from '../../components/calculator/types/percentage/Percentage'
 import reducers from './reducers'
+import middlewares from './middlewares'
 import * as constants from './constants'
-import * as CalculatorTypes from '../../constants/CalculatorTypes';
+import * as CalculatorTypes from '../../constants/CalculatorTypes'
 import * as actions from './actions'
 import * as selectors from './selectors'
+import mock from './mock'
 
 RCR.reducers.add(constants.REDUCER_NAME, reducers)
+RCR.middlewares.push(middlewares);
 
 const Style = {
   wrap: {
@@ -30,24 +33,30 @@ class App extends React.Component {
     timestamp: React.PropTypes.number,
     checkWorking: React.PropTypes.func,
     addCalculator: React.PropTypes.func,
-    removeCalculator: React.PropTypes.func
+    removeCalculator: React.PropTypes.func,
+    listCalculator: React.PropTypes.func
   }
 
   componentWillMount () {
-    console.log(this.props)
-    this.props.checkWorking()
+    this.props.listCalculator(mock)
   }
 
   render () {
+    const {addCalculator, removeCalculator} = this.props
+
     return (
       <div style={Style.wrap}>
-        <LeftBar addCalculator={this.props.addCalculator}/>
+        <LeftBar addCalculator={addCalculator}/>
         <div style={Style.content}>
           <Header />
           <Tags />
           {
             this.props.calculators.map((calculator, index) => {
-              return renderCalculator(calculator, index, this.props.removeCalculator);
+              return renderCalculator({
+                calculator,
+                index,
+                removeCalculator
+              })
             })
           }
         </div>
@@ -56,7 +65,7 @@ class App extends React.Component {
   }
 }
 
-function renderCalculator (calculator, index, removeCalculator) {
+function renderCalculator ({calculator, index, removeCalculator}) {
   let Calculator
 
   switch (calculator.get('type')) {
