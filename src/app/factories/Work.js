@@ -1,6 +1,6 @@
-let id = 0;
+let id = 0
 
-export default function Work(data) {
+export default function Work (data) {
   return {
     id: ++id,
     name: '',
