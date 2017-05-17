@@ -5,7 +5,7 @@ import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
 
-export default ({data, removeCalculator, updateCalculator, removeCalculatorWork}) => (
+export default ({data, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork}) => (
   <section className='manual panel'>
     <table className='table'>
       <thead className='panel-heading'>
@@ -16,12 +16,16 @@ export default ({data, removeCalculator, updateCalculator, removeCalculatorWork}
               className='actions'
               label={<span className='icon-setting'/>}
             >
+              <li onClick={addCalculatorWork}  className='list-item'>
+                добавить
+              </li>
               <li onClick={removeCalculator} className='list-item'>
                 удалить
               </li>
               <li onClick={() => console.log('copy')} className='list-item'>
                 копировать
               </li>
+
             </DropDown>
             <ClickEditable onChange={(value) => updateCalculator({name: value})} value={data.get('name')}/>
           </h2>

@@ -42,3 +42,11 @@ export function removeCalculatorWork(indexCalculator, id) {
     id
   }
 }
+
+export function addCalculatorWork(indexCalculator, id) {
+  return {
+    type: ActionTypes.ADD_CALCULATOR_WORK,
+    indexCalculator,
+    id
+  }
+}
