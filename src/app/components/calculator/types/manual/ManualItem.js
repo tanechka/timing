@@ -5,7 +5,7 @@ import CircleColorPicker from 'app/components/CircleColorPicker'
 import DropDown from 'app/components/DropDown'
 import format from 'app/services/format'
 
-export default ({className, calculator, data}) => {
+export default ({className, calculator, data, removeCalculatorWork}) => {
   const hourPrice1 = data.get('hourPrice1') || calculator.get('hourPrice1')
   const hourPrice2 = data.get('hourPrice2') || calculator.get('hourPrice2')
   const count = data.get('count')
@@ -13,7 +13,7 @@ export default ({className, calculator, data}) => {
   return (
     <tr className={className}>
       <td>
-        <a className='link--close'/>
+        <a className='link--close' onClick={removeCalculatorWork}/>
         <DropDown
           className='actions'
           label={<span className='view'/>}

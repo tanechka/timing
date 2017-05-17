@@ -5,7 +5,7 @@ import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
 
-export default ({data, removeCalculator}) => (
+export default ({data, removeCalculator, updateCalculator, removeCalculatorWork}) => (
   <section className='manual panel'>
     <table className='table'>
       <thead className='panel-heading'>
@@ -23,12 +23,12 @@ export default ({data, removeCalculator}) => (
                 копировать
               </li>
             </DropDown>
-            <ClickEditable onChange={() => console.log('edit')} value='Проектирование'/>
+            <ClickEditable onChange={(value) => updateCalculator({name: value})} value={data.get('name')}/>
           </h2>
         </th>
         <th>{data.get('hours')}</th>
-        <th><ClickEditable onChange={() => console.log('edit')} value='350'/></th>
-        <th><ClickEditable onChange={() => console.log('edit')} value='700'/></th>
+        <th><ClickEditable onChange={(value) => updateCalculator({hourPrice1: value})} value='350'/></th>
+        <th><ClickEditable onChange={(value) => updateCalculator({hourPrice2: value})} value='700'/></th>
         <th>{format.number(data.get('price1'))}</th>
         <th>{format.number(data.get('price2'))}</th>
       </tr>
@@ -44,7 +44,15 @@ export default ({data, removeCalculator}) => (
         <td>Цена 2</td>
       </tr>
       {
-        data.get('works').map((work, index) => <ManualItem calculator={data} data={work} key={index} className='manual-specific--blue manual-specific'/>)
+        data.get('works').map((work) => (
+          <ManualItem
+            calculator={data}
+            data={work}
+            key={work.get('id')}
+            removeCalculatorWork={removeCalculatorWork.bind(null, work.get('id'))}
+            className='manual-specific--blue manual-specific'
+          />
+        ))
       }
       </tbody>
     </table>

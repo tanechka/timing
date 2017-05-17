@@ -17,6 +17,7 @@ export default class ClickEditable extends React.PureComponent {
 
   handleChange = (event) => {
     this.setState({text: event.target.value})
+    this.props.onChange(this.state.text);
   }
 
   renderEditable = () => {

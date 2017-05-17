@@ -20,7 +20,7 @@ export function addCalculator () {
   }
 }
 
-export function updateCalculator (index, payload) {
+export function updateCalculator(index, payload) {
   return {
     type: ActionTypes.UPDATE_CALCULATOR,
     index,
@@ -32,5 +32,13 @@ export function removeCalculator(index) {
   return {
     type: ActionTypes.REMOVE_CALCULATOR,
     index
+  }
+}
+
+export function removeCalculatorWork(indexCalculator, id) {
+  return {
+    type: ActionTypes.REMOVE_CALCULATOR_WORK,
+    indexCalculator,
+    id
   }
 }

@@ -21,12 +21,31 @@ export default function (state = initialState, action) {
       return state.set('calculators', calculator(selectors.calculators(state)))
     }
     case ActionTypes.ADD_CALCULATOR: {
-      return state.updateIn(['calculators'], calculators => calculators.push(fromJS(new ManualCalculator)))
+      return state.updateIn(
+        ['calculators'],
+         calculators => calculators.push(fromJS(new ManualCalculator))
+      )
     }
     case ActionTypes.REMOVE_CALCULATOR: {
       return state.deleteIn(['calculators', action.index])
     }
+    case ActionTypes.REMOVE_CALCULATOR_WORK: {
+      return state.updateIn(
+        ['calculators', action.indexCalculator, 'works'],
+         works => works.delete(findIndexById(works, action.id))
+       )
+    }
+    case ActionTypes.UPDATE_CALCULATOR: {
+      return state.updateIn(
+        ['calculators', action.index],
+         calculator => calculator.merge(action.payload)
+       )
+    }
   }
 
   return state
+}
+
+function findIndexById(collection, id) {
+  return collection.findIndex(item => item.get('id') === id)
 }
