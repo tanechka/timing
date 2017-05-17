@@ -24,36 +24,39 @@ export default function (state = initialState, action) {
     case ActionTypes.ADD_CALCULATOR: {
       return state.updateIn(
         ['calculators'],
-         calculators => calculators.push(fromJS(new ManualCalculator))
+        calculators => calculators.push(fromJS(new ManualCalculator))
       )
-    }
-    case ActionTypes.REMOVE_CALCULATOR: {
-      return state.deleteIn(['calculators', action.index])
-    }
-    case ActionTypes.REMOVE_CALCULATOR_WORK: {
-      return state.updateIn(
-        ['calculators', action.indexCalculator, 'works'],
-         works => works.delete(findIndexById(works, action.id))
-       )
-    }
-    case ActionTypes.ADD_CALCULATOR_WORK: {
-      return state.updateIn(
-        ['calculators', action.indexCalculator, 'works'],
-         works => works.push(fromJS(new Work({name:'test'})))
-       )
     }
     case ActionTypes.UPDATE_CALCULATOR: {
       return state.updateIn(
-        ['calculators', action.index],
-         calculator => calculator.merge(action.payload)
-       )
+        ['calculators', findCalculatorIndex(state, action.id)],
+        calculator => calculator.merge(action.payload)
+      )
     }
-
+    case ActionTypes.REMOVE_CALCULATOR: {
+      return state.deleteIn(['calculators', findCalculatorIndex(state, action.id)])
+    }
+    case ActionTypes.ADD_CALCULATOR_WORK: {
+      return state.updateIn(
+        ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
+        works => works.push(fromJS(new Work({name: 'test'})))
+      )
+    }
+    case ActionTypes.REMOVE_CALCULATOR_WORK: {
+      return state.updateIn(
+        ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
+        works => works.delete(findIndexById(works, action.id))
+      )
+    }
   }
 
   return state
 }
 
-function findIndexById(collection, id) {
+function findCalculatorIndex (state, id) {
+  return findIndexById(selectors.calculators(state), id)
+}
+
+function findIndexById (collection, id) {
   return collection.findIndex(item => item.get('id') === id)
 }

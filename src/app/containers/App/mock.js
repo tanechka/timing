@@ -30,6 +30,7 @@ export default {
       ]
     }),
     {
+      id: -1,
       type: CalculatorTypes.PERCENTAGE,
       name: 'Техническое задание',
       calculators: []

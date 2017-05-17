@@ -7,10 +7,10 @@ export function listCalculator (payload) {
   }
 }
 
-export function calculateCalculator (index) {
+export function calculateCalculator (id) {
   return {
     type: ActionTypes.CALCULATE_CALCULATOR,
-    index
+    id
   }
 }
 
@@ -20,33 +20,33 @@ export function addCalculator () {
   }
 }
 
-export function updateCalculator(index, payload) {
+export function updateCalculator (id, payload) {
   return {
     type: ActionTypes.UPDATE_CALCULATOR,
-    index,
+    id,
     payload
   }
 }
 
-export function removeCalculator(index) {
+export function removeCalculator (id) {
   return {
     type: ActionTypes.REMOVE_CALCULATOR,
-    index
-  }
-}
-
-export function removeCalculatorWork(indexCalculator, id) {
-  return {
-    type: ActionTypes.REMOVE_CALCULATOR_WORK,
-    indexCalculator,
     id
   }
 }
 
-export function addCalculatorWork(indexCalculator, id) {
+export function removeCalculatorWork (calculatorId, id) {
+  return {
+    type: ActionTypes.REMOVE_CALCULATOR_WORK,
+    calculatorId,
+    id
+  }
+}
+
+export function addCalculatorWork(calculatorId, id) {
   return {
     type: ActionTypes.ADD_CALCULATOR_WORK,
-    indexCalculator,
+    calculatorId,
     id
   }
 }

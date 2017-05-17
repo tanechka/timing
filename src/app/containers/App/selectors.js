@@ -5,3 +5,12 @@ export function timestamp (state) {
 export function calculators (state) {
   return state.get('calculators')
 }
+
+export function calculator (state, id) {
+  const _calculators = calculators(state)
+  return _calculators.get(findIndexById(_calculators, id))
+}
+
+function findIndexById (collection, id) {
+  return collection.findIndex(item => item.get('id') === id)
+}

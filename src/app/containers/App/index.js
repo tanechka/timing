@@ -54,10 +54,9 @@ class App extends React.Component {
           <Header />
           <Tags />
           {
-            this.props.calculators.map((calculator, index) => {
+            this.props.calculators.map((calculator) => {
               return renderCalculator({
                 calculator,
-                index,
                 removeCalculator,
                 updateCalculator,
                 removeCalculatorWork,
@@ -71,7 +70,8 @@ class App extends React.Component {
   }
 }
 
-function renderCalculator ({calculator, index, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork}) {
+function renderCalculator ({calculator, removeCalculator, updateCalculator, addCalculatorWork, removeCalculatorWork}) {
+  const id = calculator.get('id')
   let Calculator
 
   switch (calculator.get('type')) {
@@ -87,12 +87,12 @@ function renderCalculator ({calculator, index, removeCalculator, updateCalculato
 
   return (
     <Calculator
-      removeCalculator={removeCalculator.bind(null, index)}
-      updateCalculator={updateCalculator.bind(null, index)}
-      removeCalculatorWork={removeCalculatorWork.bind(null, index)}
-      addCalculatorWork={addCalculatorWork.bind(null, index)}
+      key={id}
       data={calculator}
-      key={index}
+      removeCalculator={removeCalculator.bind(null, id)}
+      updateCalculator={updateCalculator.bind(null, id)}
+      addCalculatorWork={addCalculatorWork.bind(null, id)}
+      removeCalculatorWork={removeCalculatorWork.bind(null, id)}
     />
   )
 }
