@@ -11,6 +11,6 @@ export function calculator (state, id) {
   return _calculators.get(findIndexById(_calculators, id))
 }
 
-function findIndexById (collection, id) {
+export function findIndexById (collection, id) {
   return collection.findIndex(item => item.get('id') === id)
 }

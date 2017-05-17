@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable'
 import calculator from 'app/services/calculator'
-import * as ActionTypes from './constants'
-import * as selectors from './selectors'
 import ManualCalculator from 'app/factories/ManualCalculator'
-import Work from 'app/factories/Work'
+import * as ActionTypes from '../constants'
+import * as selectors from '../selectors'
+import worksReducer from './works'
 
 const initialState = fromJS({
   tags: [],
@@ -36,17 +36,13 @@ export default function (state = initialState, action) {
     case ActionTypes.REMOVE_CALCULATOR: {
       return state.deleteIn(['calculators', findCalculatorIndex(state, action.id)])
     }
-    case ActionTypes.ADD_CALCULATOR_WORK: {
-      return state.updateIn(
-        ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
-        works => works.push(fromJS(new Work({name: 'test'})))
-      )
-    }
-    case ActionTypes.REMOVE_CALCULATOR_WORK: {
-      return state.updateIn(
-        ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
-        works => works.delete(findIndexById(works, action.id))
-      )
+    default: {
+      if (action.calculatorId !== void 0 && action.type.indexOf('_WORK') > -1) {
+        return state.updateIn(
+          ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
+          works => worksReducer(works, action)
+        )
+      }
     }
   }
 
@@ -54,9 +50,5 @@ export default function (state = initialState, action) {
 }
 
 function findCalculatorIndex (state, id) {
-  return findIndexById(selectors.calculators(state), id)
-}
-
-function findIndexById (collection, id) {
-  return collection.findIndex(item => item.get('id') === id)
+  return selectors.findIndexById(selectors.calculators(state), id)
 }
