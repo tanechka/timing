@@ -20,7 +20,8 @@ export default function (state = initialState, action) {
       return fromJS(action.payload)
     }
     case ActionTypes.CALCULATE_CALCULATOR: {
-      return state.set('calculators', calculator(selectors.calculators(state)))
+      let calculators = selectors.calculators(state)
+      return state.set('calculators', calculator(calculators, selectors.findIndexById(calculators, action.id)))
     }
     case ActionTypes.ADD_CALCULATOR: {
       return state.updateIn(

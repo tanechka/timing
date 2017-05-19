@@ -1,4 +1,7 @@
-export default function calculator (calculators) {
+export default function calculator (calculators, index) {
+  if (index !== void 0) {
+    return calculators.update(index, calculate)
+  }
   return calculators.map(calculate)
 }
 
