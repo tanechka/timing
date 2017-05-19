@@ -1,12 +1,12 @@
 import { MANUAL } from '../constants/CalculatorTypes'
-import Calculaltor from './Calculaltor'
+import Calculator from './Calculator'
 import calculator from 'app/services/calculator'
 
 calculator[MANUAL] = calculate
 
 export default function (calc) {
   return {
-    ...Calculaltor(),
+    ...Calculator(),
     name: 'Проектирование',
     type: MANUAL,
     works: [],

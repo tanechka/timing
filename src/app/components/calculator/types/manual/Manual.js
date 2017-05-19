@@ -4,6 +4,22 @@ import ManualItem from './ManualItem'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
+import NumberFormat from 'react-number-format'
+
+const Style = {
+  input: {
+    background: 'none',
+    border: 'none',
+    outline: 'none',
+    borderBottom: '1px solid',
+    // fontWeight: 'inherit',
+    color: 'inherit',
+    width: 42,
+    textAlign: 'center',
+    padding: 0,
+    marginTop: 3
+  }
+}
 
 export default ({
   data,
@@ -24,7 +40,7 @@ export default ({
               className='actions'
               label={<span className='icon-setting'/>}
             >
-              <li onClick={addCalculatorWork}  className='list-item'>
+              <li onClick={addCalculatorWork} className='list-item'>
                 добавить
               </li>
               <li onClick={removeCalculator} className='list-item'>
@@ -33,14 +49,27 @@ export default ({
               <li onClick={() => console.log('copy')} className='list-item'>
                 копировать
               </li>
-
             </DropDown>
             <ClickEditable onChange={(value) => updateCalculator({name: value})} value={data.get('name')}/>
           </h2>
         </th>
         <th>{data.get('hours')}</th>
-        <th><ClickEditable onChange={(value) => updateCalculator({hourPrice1: value})} value='350'/></th>
-        <th><ClickEditable onChange={(value) => updateCalculator({hourPrice2: value})} value='700'/></th>
+        <th>
+          <NumberFormat
+            thousandSeparator=" "
+            style={Style.input}
+            onChange={(e, value) => updateCalculator({hourPrice1: value})}
+            value={data.get('hourPrice1')}
+          />
+        </th>
+        <th>
+          <NumberFormat
+            thousandSeparator=" "
+            style={Style.input}
+            onChange={(e, value) => updateCalculator({hourPrice2: value})}
+            value={data.get('hourPrice2')}
+          />
+        </th>
         <th>{format.number(data.get('price1'))}</th>
         <th>{format.number(data.get('price2'))}</th>
       </tr>

@@ -4,6 +4,20 @@ import ClickEditable from 'app/components/ClickEditable'
 import CircleColorPicker from 'app/components/CircleColorPicker'
 import DropDown from 'app/components/DropDown'
 import format from 'app/services/format'
+import NumberFormat from 'react-number-format'
+
+const Style = {
+  input: {
+    width: 30,
+    background: 'none',
+    border: 0,
+    outline: 'none',
+    color: 'inherit',
+    textAlign: 'center',
+    borderBottom: '1px solid',
+    padding: 0
+  }
+}
 
 export default ({className, calculator, data, removeCalculatorWork, updateCalculatorWork}) => {
   const hourPrice1 = data.get('hourPrice1') || calculator.get('hourPrice1')
@@ -30,12 +44,29 @@ export default ({className, calculator, data, removeCalculatorWork, updateCalcul
       <td>
         <IncrementDecrement value={count} onChange={(value) => updateCalculatorWork({count: value})} />
       </td>
-      <td><ClickEditable onChange={(value) => updateCalculatorWork({hours: value})}
-                          value={data.get('hours')}/></td>
-      <td><ClickEditable onChange={(value) => updateCalculatorWork({hourPrice1: value})}
-                         value={hourPrice1}/></td>
-      <td><ClickEditable onChange={(value) => updateCalculatorWork({hourPrice2: value})}
-                         value={hourPrice2}/></td>
+      <td>
+        <NumberFormat
+          style={Style.input}
+          onChange={(e, value) => updateCalculatorWork({hours: value})}
+          value={data.get('hours')}
+        />
+      </td>
+      <td>
+        <NumberFormat
+          style={Style.input}
+          onChange={(e, value) => updateCalculatorWork({hourPrice1: value})}
+          placeholder={calculator.get('hourPrice1')}
+          value={data.get('hourPrice1')}
+        />
+      </td>
+      <td>
+        <NumberFormat
+          style={Style.input}
+          onChange={(e, value) => updateCalculatorWork({hourPrice2: value})}
+          placeholder={calculator.get('hourPrice2')}
+          value={data.get('hourPrice2')}
+        />
+      </td>
       <td>{format.number(count * hourPrice1)}</td>
       <td>{format.number(count * hourPrice2)}</td>
     </tr>
