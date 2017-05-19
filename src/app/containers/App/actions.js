@@ -50,3 +50,12 @@ export function addCalculatorWork(calculatorId, id) {
     id
   }
 }
+
+export function updateCalculatorWork (calculatorId, id, payload) {
+  return {
+    type: ActionTypes.UPDATE_CALCULATOR_WORK,
+    calculatorId,
+    id,
+    payload
+  }
+}

@@ -37,7 +37,8 @@ class App extends React.Component {
     listCalculator: React.PropTypes.func,
     updateCalculator: React.PropTypes.func,
     removeCalculatorWork: React.PropTypes.func,
-    addCalculatorWork: React.PropTypes.func
+    addCalculatorWork: React.PropTypes.func,
+    updateCalculatorWork: React.PropTypes.func
   }
 
   componentWillMount () {
@@ -45,7 +46,14 @@ class App extends React.Component {
   }
 
   render () {
-    const {addCalculator, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork} = this.props
+    const {
+      addCalculator,
+      removeCalculator,
+      updateCalculator,
+      removeCalculatorWork,
+      addCalculatorWork,
+      updateCalculatorWork
+    } = this.props
 
     return (
       <div style={Style.wrap}>
@@ -60,7 +68,8 @@ class App extends React.Component {
                 removeCalculator,
                 updateCalculator,
                 removeCalculatorWork,
-                addCalculatorWork
+                addCalculatorWork,
+                updateCalculatorWork
               })
             })
           }
@@ -70,7 +79,10 @@ class App extends React.Component {
   }
 }
 
-function renderCalculator ({calculator, removeCalculator, updateCalculator, addCalculatorWork, removeCalculatorWork}) {
+function renderCalculator ({
+    calculator, removeCalculator, updateCalculator, addCalculatorWork, removeCalculatorWork, updateCalculatorWork
+  })
+  {
   const id = calculator.get('id')
   let Calculator
 
@@ -93,6 +105,7 @@ function renderCalculator ({calculator, removeCalculator, updateCalculator, addC
       updateCalculator={updateCalculator.bind(null, id)}
       addCalculatorWork={addCalculatorWork.bind(null, id)}
       removeCalculatorWork={removeCalculatorWork.bind(null, id)}
+      updateCalculatorWork={updateCalculatorWork.bind(null, id)}
     />
   )
 }

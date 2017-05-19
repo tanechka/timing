@@ -1,7 +1,7 @@
 import React from 'react'
 import './percentage.scss'
 
-const Percentage = ({removeCalculator, upadateCalculator, removeCalculatorWork, addCalculatorWork}) => (
+const Percentage = ({removeCalculator, upadateCalculator, removeCalculatorWork, addCalculatorWork, updateCalculatorWork}) => (
   <section className='percentage panel'>
     <table className='table'>
       <thead className='panel-heading'>

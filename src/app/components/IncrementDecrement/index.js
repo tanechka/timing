@@ -18,6 +18,8 @@ export default class DropDown extends React.PureComponent {
     this.setState({
       value: this.state.value + 1
     })
+
+    this.props.onChange(this.state.value)
   }
 
   decrement = () => {
@@ -25,14 +27,20 @@ export default class DropDown extends React.PureComponent {
       this.setState({
         value: this.state.value - 1
       })
+
+      this.props.onChange(this.state.value)
     }
+  }
+
+  handleChange = () => {
+    this.props.onChange(event.target.value)
   }
 
   render () {
     return (
       <div className='increment-decrement'>
         <button className='button button--increase' onClick={this.decrement}>-</button>
-        <input className='value' value={this.state.value}/>
+        <input onChange = { this.handleChange} className='value' value={this.state.value}/>
         <button className='button button--decrease' onClick={this.increment}>+</button>
       </div>
     )

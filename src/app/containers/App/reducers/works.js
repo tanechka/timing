@@ -11,6 +11,12 @@ export default function (state, action) {
     case ActionTypes.REMOVE_CALCULATOR_WORK: {
       return state.delete(selectors.findIndexById(state, action.id))
     }
+    case ActionTypes.UPDATE_CALCULATOR_WORK: {
+      return state.updateIn(
+        [selectors.findIndexById(state, action.id)], work =>
+        work.merge(action.payload)
+      )
+    }
   }
 
   return state

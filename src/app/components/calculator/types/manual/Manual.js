@@ -5,7 +5,10 @@ import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
 
-export default ({data, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork}) => (
+export default ({
+  data, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork, updateCalculatorWork
+
+  }) => (
   <section className='manual panel'>
     <table className='table'>
       <thead className='panel-heading'>
@@ -54,6 +57,7 @@ export default ({data, removeCalculator, updateCalculator, removeCalculatorWork,
             data={work}
             key={work.get('id')}
             removeCalculatorWork={removeCalculatorWork.bind(null, work.get('id'))}
+            updateCalculatorWork={updateCalculatorWork.bind(null, work.get('id'))}
             className='manual-specific--blue manual-specific'
           />
         ))
