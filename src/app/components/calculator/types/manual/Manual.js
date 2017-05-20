@@ -6,9 +6,14 @@ import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
 
 export default ({
-  data, removeCalculator, updateCalculator, removeCalculatorWork, addCalculatorWork, updateCalculatorWork
-
+  data,
+  removeCalculator,
+  updateCalculator,
+  removeCalculatorWork,
+  addCalculatorWork,
+  updateCalculatorWork
   }) => (
+    
   <section className='manual panel'>
     <table className='table'>
       <thead className='panel-heading'>

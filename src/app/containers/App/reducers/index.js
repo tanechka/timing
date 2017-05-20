@@ -4,6 +4,7 @@ import ManualCalculator from 'app/factories/ManualCalculator'
 import * as ActionTypes from '../constants'
 import * as selectors from '../selectors'
 import worksReducer from './works'
+import percentageCalculatorReducer from './percentageCalculators'
 
 const initialState = fromJS({
   tags: [],
@@ -41,6 +42,12 @@ export default function (state = initialState, action) {
         return state.updateIn(
           ['calculators', findCalculatorIndex(state, action.calculatorId), 'works'],
           works => worksReducer(works, action)
+        )
+      }
+      if(action.calculatorId !== void 0 && action.type.indexOf('_PERCENTAGE') > -1) {
+        return state.updateIn(
+          ['calculators', findCalculatorIndex(state, action.calculatorId), 'calculators'],
+          calculators => percentageCalculatorReducer(calculators, action)
         )
       }
     }

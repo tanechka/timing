@@ -19,7 +19,7 @@ RCR.middlewares.push(middlewares);
 
 const Style = {
   wrap: {
-    overflow: 'auto'
+    //overflow: 'auto'
   },
   content: {
     background: '#eeeeee',
@@ -38,7 +38,8 @@ class App extends React.Component {
     updateCalculator: React.PropTypes.func,
     removeCalculatorWork: React.PropTypes.func,
     addCalculatorWork: React.PropTypes.func,
-    updateCalculatorWork: React.PropTypes.func
+    updateCalculatorWork: React.PropTypes.func,
+    addPercentageCalculator: React.PropTypes.func
   }
 
   componentWillMount () {
@@ -47,12 +48,14 @@ class App extends React.Component {
 
   render () {
     const {
+      calculators,
       addCalculator,
       removeCalculator,
       updateCalculator,
       removeCalculatorWork,
       addCalculatorWork,
-      updateCalculatorWork
+      updateCalculatorWork,
+      addPercentageCalculator
     } = this.props
 
     return (
@@ -62,14 +65,16 @@ class App extends React.Component {
           <Header />
           <Tags />
           {
-            this.props.calculators.map((calculator) => {
+            calculators.map((calculator) => {
               return renderCalculator({
                 calculator,
                 removeCalculator,
                 updateCalculator,
                 removeCalculatorWork,
                 addCalculatorWork,
-                updateCalculatorWork
+                updateCalculatorWork,
+                calculators,
+                addPercentageCalculator
               })
             })
           }
@@ -80,7 +85,14 @@ class App extends React.Component {
 }
 
 function renderCalculator ({
-    calculator, removeCalculator, updateCalculator, addCalculatorWork, removeCalculatorWork, updateCalculatorWork
+    calculator,
+    removeCalculator,
+    updateCalculator,
+    addCalculatorWork,
+    removeCalculatorWork,
+    updateCalculatorWork,
+    calculators,
+    addPercentageCalculator
   })
   {
   const id = calculator.get('id')
@@ -106,6 +118,8 @@ function renderCalculator ({
       addCalculatorWork={addCalculatorWork.bind(null, id)}
       removeCalculatorWork={removeCalculatorWork.bind(null, id)}
       updateCalculatorWork={updateCalculatorWork.bind(null, id)}
+      calculators={calculators}
+      addPercentageCalculator={addPercentageCalculator.bind(null, id)}
     />
   )
 }

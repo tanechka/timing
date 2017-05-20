@@ -1,6 +1,7 @@
 import * as  CalculatorTypes from '../../constants/CalculatorTypes'
 import ManualCalculator from '../../factories/ManualCalculator'
 import Work from '../../factories/Work'
+import PercentageCalculator from '../../factories/PercentageCalculator'
 
 export default {
   tags: [],
@@ -29,11 +30,8 @@ export default {
         })
       ]
     }),
-    {
-      id: -1,
-      type: CalculatorTypes.PERCENTAGE,
-      name: 'Техническое задание',
-      calculators: []
-    }
+    new PercentageCalculator({
+      name: 'Техническое задание'
+    })
   ]
 }

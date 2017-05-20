@@ -59,3 +59,11 @@ export function updateCalculatorWork (calculatorId, id, payload) {
     payload
   }
 }
+
+export function addPercentageCalculator(calculatorId, id) {
+  return {
+    type: ActionTypes.ADD_PERCENTAGE_CALCULATOR,
+    calculatorId,
+    id
+  }
+}
