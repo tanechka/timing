@@ -1,10 +1,10 @@
 import { PERCENTAGE } from '../constants/CalculatorTypes'
-import Calculaltor from './Calculaltor'
+import Calculator from './Calculator'
 import calculator from 'app/services/calculator'
 
 export default function (calc) {
   return {
-    ...Calculaltor(),
+    ...Calculator(),
     name: 'Проектирование',
     type: PERCENTAGE,
     calculators: [],
