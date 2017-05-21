@@ -20,7 +20,7 @@ function calculate (calculator, complexity, calculators) {
     let relativeCalculator = calculators.find(calculator => calculator.get('id') === calculatorId)
 
     if (relativeCalculator !== void 0) {
-      result.hours += Math.ceil(relativeCalculator.get('hours') * coeff * complexity)
+      result.hours += Math.ceil(relativeCalculator.get('hours') * coeff)
     }
 
     return result
