@@ -9,9 +9,9 @@ import worksReducer from './works'
 import percentageCalculatorReducer from './percentageCalculators'
 
 const initialState = fromJS({
+  complexity: 1.2,
   tags: [],
-  calculators: [],
-  complexity: 1
+  calculators: []
 })
 
 export default function (state = initialState, action) {
@@ -20,11 +20,18 @@ export default function (state = initialState, action) {
       return state
     }
     case ActionTypes.LIST_CALCULATOR: {
-      return fromJS(action.payload)
+      return state.merge(fromJS(action.payload))
     }
     case ActionTypes.CALCULATE_CALCULATOR: {
       let calculators = selectors.calculators(state)
-      return state.set('calculators', calculator(calculators, selectors.findIndexById(calculators, action.id)))
+      return state.set(
+        'calculators',
+        calculator(
+          calculators,
+          selectors.complexity(state),
+          selectors.findIndexById(calculators, action.id)
+        )
+      )
     }
     case ActionTypes.ADD_CALCULATOR: {
       const Calculator = action.payload.type === CalculatorTypes.MANUAL ? ManualCalculator : PercentageCalculator
@@ -47,13 +54,11 @@ export default function (state = initialState, action) {
     case ActionTypes.SET_COMPLEXITY: {
       return state.set('complexity', action.payload.count)
     }
-
     case ActionTypes.UPDATE_TAG_COUNT: {
       return state.updateIn(['tags', findTagIndex(state, action.id)],
         tag => tag.merge(action.payload)
       )
     }
-
     default: {
       if (action.calculatorId !== void 0 && action.type.indexOf('_WORK') > -1) {
         return state.updateIn(

@@ -21,10 +21,13 @@ export default store => next => action => {
       if (action.payload !== void 0 && action.payload.name !== void 0) {
         break
       }
+    case ActionTypes.SET_COMPLEXITY:
     case ActionTypes.ADD_CALCULATOR: {
       const result = next(action)
 
-      dispatch(actions.calculateCalculator(calculatorId))
+      if (calculatorId !== void 0) {
+        dispatch(actions.calculateCalculator(calculatorId))
+      }
       throttleCalculate(dispatch)
       return result
     }

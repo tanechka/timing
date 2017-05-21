@@ -34,7 +34,7 @@ export default ({
                 копировать
               </li>
             </DropDown>
-            <ClickEditable onChange={(value) => updateCalculator({name: value})} value={data.get('name')}/>
+            <ClickEditable style={{minWidth: 150}} onChange={(name) => updateCalculator({name})} value={data.get('name')}/>
           </h2>
         </th>
         <th>{data.get('hours')}</th>

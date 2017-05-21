@@ -3,7 +3,7 @@ import InputRange from 'react-input-range'
 import 'react-input-range/dist/react-input-range.css'
 
 export default class RangeElement extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -21,17 +21,17 @@ export default class RangeElement extends React.Component {
 
   handleChange = (range, value) => {
     this.setState({value})
-    this.props.onChange(value/10)
+    this.props.onChange(value / 10)
   }
 
-  render() {
+  render () {
     return (
-        <InputRange
-          maxValue={20}
-          minValue={10}
-          value={this.state.value}
-          onChange={this.handleChange}
-          onChangeComplete={value => console.log(value)} />
+      <InputRange
+        maxValue={20}
+        minValue={5}
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
     )
   }
 }

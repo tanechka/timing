@@ -1,5 +1,5 @@
-export default function calculator (calculators, index) {
-  let _calculate = calculate.bind(null, calculators)
+export default function calculator (calculators, complexity, index) {
+  let _calculate = calculate.bind(null, calculators, complexity)
 
   if (index !== void 0) {
     return calculators.update(index, _calculate)
@@ -7,7 +7,7 @@ export default function calculator (calculators, index) {
   return calculators.map(_calculate)
 }
 
-function calculate (calculators, calc) {
+function calculate (calculators, complexity, calc) {
   const type = calc.get('type')
-  return calculator[type] ? calculator[type](calc, calculators) : calc
+  return calculator[type] ? calculator[type](calc, complexity, calculators) : calc
 }

@@ -14,13 +14,13 @@ export default function (calc) {
   }
 }
 
-function calculate (calculator, calculators) {
+function calculate (calculator, complexity, calculators) {
   const coeff = calculator.get('value') / 100
   const result = calculator.get('calculators').reduce((result, calculatorId) => {
     let relativeCalculator = calculators.find(calculator => calculator.get('id') === calculatorId)
 
     if (relativeCalculator !== void 0) {
-      result.hours += relativeCalculator.get('hours') * coeff
+      result.hours += Math.ceil(relativeCalculator.get('hours') * coeff)
     }
 
     return result

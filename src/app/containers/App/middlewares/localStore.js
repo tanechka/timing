@@ -16,10 +16,10 @@ export default store => next => action => {
   return next(action)
 }
 
-function update(data) {
+function update (data) {
   store.set('timing', data)
 }
 
-function read() {
+function read () {
   return store.get('timing')
 }

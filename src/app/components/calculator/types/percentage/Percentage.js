@@ -13,8 +13,7 @@ export default ({
   addPercentageCalculator,
   removePercentageCalculator
 }) => {
-  const value = data.get('value')
-  let avalibleCalculators =  calculators.filter(element => {
+  let availableCalculators = calculators.filter(element => {
     return (
       element.get('type') === 'manual' &&
       data.get('calculators').indexOf(element.get('id')) === -1
@@ -39,7 +38,7 @@ export default ({
                   копировать
                 </li>
               </DropDown>
-              <ClickEditable onChange={name => updateCalculator({name})} value={data.get('name')}/>
+              <ClickEditable style={{minWidth: 150}} onChange={name => updateCalculator({name})} value={data.get('name')}/>
             </h2>
           </th>
           <th>
@@ -74,8 +73,8 @@ export default ({
             >
               {
 
-                avalibleCalculators.size ?
-                  avalibleCalculators.map(calculator => (
+                availableCalculators.size ?
+                  availableCalculators.map(calculator => (
                     <li
                       key={calculator.get('id')}
                       className='list-item'
