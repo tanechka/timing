@@ -2,7 +2,7 @@ import ManualCalculator from '../../factories/ManualCalculator'
 import Work from '../../factories/Work'
 import PercentageCalculator from '../../factories/PercentageCalculator'
 
-export default {
+const mock = {
   tags: [],
   calculators: [
     new ManualCalculator({
@@ -33,7 +33,11 @@ export default {
       name: 'Техническое задание',
       hourPrice1: 350,
       hourPrice2: 700,
-      calculators: [1]
+      calculators: []
     })
   ]
 }
+
+mock.calculators[1].calculators.push(mock.calculators[0].id)
+
+export default mock

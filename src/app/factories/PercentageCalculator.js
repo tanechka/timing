@@ -17,12 +17,10 @@ export default function (calc) {
 function calculate (calculator, calculators) {
   const coeff = calculator.get('value') / 100
   const result = calculator.get('calculators').reduce((result, calculatorId) => {
-    let calculator = calculators.find(calculator => calculator.get('id') === calculatorId)
+    let relativeCalculator = calculators.find(calculator => calculator.get('id') === calculatorId)
 
-    if (calculator !== void 0) {
-      result.hours += calculator.get('hours') * coeff
-      result.price1 += calculator.get('price1') * coeff
-      result.price2 += calculator.get('price2') * coeff
+    if (relativeCalculator !== void 0) {
+      result.hours += relativeCalculator.get('hours') * coeff
     }
 
     return result
@@ -31,6 +29,9 @@ function calculate (calculator, calculators) {
     price1: 0,
     price2: 0
   })
+
+  result.price1 = result.hours * calculator.get('hourPrice1')
+  result.price2 = result.hours * calculator.get('hourPrice2')
 
   return calculator.merge(result)
 }
