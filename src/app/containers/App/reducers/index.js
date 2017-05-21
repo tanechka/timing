@@ -9,9 +9,9 @@ import worksReducer from './works'
 import percentageCalculatorReducer from './percentageCalculators'
 
 const initialState = fromJS({
+  complexity: 1.5,
   tags: [],
-  calculators: [],
-  complexity: 1
+  calculators: []
 })
 
 export default function (state = initialState, action) {
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
       return state
     }
     case ActionTypes.LIST_CALCULATOR: {
-      return fromJS(action.payload)
+      return state.merge(fromJS(action.payload))
     }
     case ActionTypes.CALCULATE_CALCULATOR: {
       let calculators = selectors.calculators(state)
