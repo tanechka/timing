@@ -8,7 +8,8 @@ const Percentage = ({
   removeCalculator,
   upadateCalculator,
   calculators,
-  addPercentageCalculator
+  addPercentageCalculator,
+  removePercentageCalculator
   }) => (
 
   <section className='percentage panel'>
@@ -75,7 +76,16 @@ const Percentage = ({
 
             return (
               <tr>
-                <td><a className="link--close"></a>{calculator.get('name')}</td>
+                <td><a className="link--close" onClick={ () => {
+                  removePercentageCalculator(calculator.get('id'))
+                }}>
+                </a>{calculator.get('name')}</td>
+                <td></td>
+                <td>{calculator.get('hours')}</td>
+                <td>{calculator.get('hourPrice1')}</td>
+                <td>{calculator.get('hourPrice2')}</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
             )
           })

@@ -67,3 +67,11 @@ export function addPercentageCalculator(calculatorId, id) {
     id
   }
 }
+
+export function removePercentageCalculator(calculatorId, id) {
+  return {
+    type: ActionTypes.REMOVE_PERCENTAGE_CALCULATOR,
+    calculatorId,
+    id
+  }
+}

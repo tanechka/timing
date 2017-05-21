@@ -1,5 +1,5 @@
-import * as ActionTypes from './constants'
-import * as actions from './actions'
+import * as ActionTypes from '../constants'
+import * as actions from '../actions'
 
 export default ({dispatch}) => next => action => {
   switch (action.type) {

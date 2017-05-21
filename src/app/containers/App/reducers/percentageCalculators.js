@@ -11,6 +11,9 @@ export default function (state, action) {
       }
       return state.push(action.id)
     }
+    case ActionTypes.REMOVE_PERCENTAGE_CALCULATOR: {
+      return state.delete(state.indexOf(action.id))
+    }
   }
   return state
 }
