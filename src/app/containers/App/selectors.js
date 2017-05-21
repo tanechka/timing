@@ -6,6 +6,9 @@ export function timestamp (state) {
 export function complexity(state) {
   return state.get('complexity')
 }
+export function tags(state) {
+  return state.get('tags')
+}
 export function calculators (state) {
   state = state[REDUCER_NAME] === void 0 ? state : state[REDUCER_NAME]
   return state.get('calculators')

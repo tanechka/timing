@@ -2,19 +2,28 @@ import React from 'react'
 import Tag from './tag/Tag'
 import './tags.scss'
 
-const Tags = () => (
-  <section className='calculator-tags panel'>
-    <div className='panel-heading'>
-      <h2 className='title'>Типы работ</h2>
-    </div>
+export default ({
+  tags,
+  updateTagCount
+}) => {
+  return (
+    <section className='calculator-tags panel'>
+      <div className='panel-heading'>
+        <h2 className='title'>Типы работ</h2>
+      </div>
 
-    <section className='panel-content'>
-      <Tag type='calculator-tag blue pull-left' />
-      <Tag type='calculator-tag green pull-left' />
-      <Tag type='calculator-tag orange pull-left' />
-      <Tag type='calculator-tag red pull-left' />
+      <section className='panel-content'>
+        {
+          tags.map((tag) => (
+            <Tag
+              updateTagCount={updateTagCount.bind(null, tag.get('id') )}
+              count={tag.get('count')}
+              key={tag.get('id')}
+              type={tag.get('color') + ' calculator-tag pull-left'}
+              />
+          ))
+        }
+      </section>
     </section>
-  </section>
-)
-
-export default Tags
+  )
+}

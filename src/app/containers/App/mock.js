@@ -1,9 +1,27 @@
 import ManualCalculator from '../../factories/ManualCalculator'
 import Work from '../../factories/Work'
+import Tag from '../../factories/Tag'
 import PercentageCalculator from '../../factories/PercentageCalculator'
 
 const mock = {
-  tags: [],
+  tags: [
+    new Tag({
+      color: "blue",
+      count: 20
+    }),
+    new Tag({
+      color: "green",
+      count: 15
+    }),
+    new Tag({
+      color: "orange",
+      count: 10
+    }),
+    new Tag({
+      color: "red",
+      count: 5
+    })
+  ],
   calculators: [
     new ManualCalculator({
       name: 'Проектирование',

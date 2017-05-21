@@ -85,3 +85,11 @@ export function setComplexity(payload) {
     payload
   }
 }
+
+export function updateTagCount(id, payload) {
+  return {
+    type: ActionTypes.UPDATE_TAG_COUNT,
+    id,
+    payload
+  }
+}

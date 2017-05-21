@@ -43,8 +43,15 @@ export default function (state = initialState, action) {
     case ActionTypes.REMOVE_CALCULATOR: {
       return state.deleteIn(['calculators', findCalculatorIndex(state, action.id)])
     }
+
     case ActionTypes.SET_COMPLEXITY: {
       return state.set('complexity', action.payload.count)
+    }
+
+    case ActionTypes.UPDATE_TAG_COUNT: {
+      return state.updateIn(['tags', findTagIndex(state, action.id)],
+        tag => tag.merge(action.payload)
+      )
     }
 
     default: {
@@ -68,4 +75,8 @@ export default function (state = initialState, action) {
 
 function findCalculatorIndex (state, id) {
   return selectors.findIndexById(selectors.calculators(state), id)
+}
+
+function findTagIndex (state, id) {
+  return selectors.findIndexById(selectors.tags(state), id)
 }
