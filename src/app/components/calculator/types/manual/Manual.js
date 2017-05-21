@@ -1,5 +1,5 @@
 import React from 'react'
-import './manual.scss'
+import Classes from './manual.scss'
 import ManualItem from './ManualItem'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
@@ -14,7 +14,7 @@ export default ({
   addCalculatorWork,
   updateCalculatorWork
   }) => (
-  <section className='manual panel'>
+  <section className={`${Classes.manual} panel`}>
     <table className='table'>
       <thead className='panel-heading'>
       <tr>

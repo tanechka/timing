@@ -14,9 +14,11 @@ export default store => next => action => {
     case ActionTypes.ADD_CALCULATOR_WORK:
     case ActionTypes.UPDATE_CALCULATOR_WORK:
     case ActionTypes.REMOVE_CALCULATOR_WORK:
+    case ActionTypes.ADD_PERCENTAGE_CALCULATOR:
+    case ActionTypes.REMOVE_PERCENTAGE_CALCULATOR:
       calculatorId = action.calculatorId
     case ActionTypes.UPDATE_CALCULATOR:
-      if (action.payload.name !== undefined) {
+      if (action.payload !== void 0 && action.payload.name !== void 0) {
         break
       }
     case ActionTypes.ADD_CALCULATOR: {

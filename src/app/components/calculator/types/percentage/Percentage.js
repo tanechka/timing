@@ -1,5 +1,5 @@
 import React from 'react'
-import './percentage.scss'
+import Classes from './percentage.scss'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import HeaderNumber from 'app/components/HeaderNumber'
@@ -16,7 +16,7 @@ export default ({
   const value = data.get('value')
 
   return (
-    <section className='percentage panel'>
+    <section className={`${Classes.percentage} panel`}>
       <table className='table'>
         <thead className='panel-heading'>
         <tr>
@@ -33,7 +33,7 @@ export default ({
                   копировать
                 </li>
               </DropDown>
-              <ClickEditable onChange={() => {}} value={data.get('name')}/>
+              <ClickEditable onChange={name => updateCalculator({name})} value={data.get('name')}/>
             </h2>
           </th>
           <th>
