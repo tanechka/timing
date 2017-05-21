@@ -40,7 +40,9 @@ class App extends React.Component {
     addCalculatorWork: React.PropTypes.func,
     updateCalculatorWork: React.PropTypes.func,
     addPercentageCalculator: React.PropTypes.func,
-    removePercentageCalculator: React.PropTypes.func
+    removePercentageCalculator: React.PropTypes.func,
+    setComplexity: React.PropTypes.func,
+    complexity: React.PropTypes.number
   }
 
   componentWillMount () {
@@ -57,14 +59,16 @@ class App extends React.Component {
       addCalculatorWork,
       updateCalculatorWork,
       addPercentageCalculator,
-      removePercentageCalculator
+      removePercentageCalculator,
+      setComplexity,
+      complexity
     } = this.props
 
     return (
       <div style={Style.wrap}>
         <LeftBar addCalculator={addCalculator}/>
         <div style={Style.content}>
-          <Header />
+          <Header setComplexity={setComplexity} complexity={complexity}/>
           <Tags />
           {
             calculators.map((calculator) => {
@@ -132,7 +136,8 @@ function renderCalculator ({
 export default connect(
   state => ({
     calculators: selectors.calculators(state[constants.REDUCER_NAME]),
-    timestamp: selectors.timestamp(state[constants.REDUCER_NAME])
+    timestamp: selectors.timestamp(state[constants.REDUCER_NAME]),
+    complexity: selectors.complexity(state[constants.REDUCER_NAME])
   }),
   actions
 )(App)

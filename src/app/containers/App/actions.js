@@ -75,3 +75,10 @@ export function removePercentageCalculator(calculatorId, id) {
     id
   }
 }
+
+export function setComplexity(payload) {
+  return {
+    type: ActionTypes.SET_COMPLEXITY,
+    payload
+  }
+}

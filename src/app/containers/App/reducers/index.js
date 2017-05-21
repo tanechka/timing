@@ -8,7 +8,8 @@ import percentageCalculatorReducer from './percentageCalculators'
 
 const initialState = fromJS({
   tags: [],
-  calculators: []
+  calculators: [],
+  complexity: 1
 })
 
 export default function (state = initialState, action) {
@@ -38,6 +39,10 @@ export default function (state = initialState, action) {
     case ActionTypes.REMOVE_CALCULATOR: {
       return state.deleteIn(['calculators', findCalculatorIndex(state, action.id)])
     }
+    case ActionTypes.SET_COMPLEXITY: {
+      return state.set('complexity', action.payload.count)
+    }
+
     default: {
       if (action.calculatorId !== void 0 && action.type.indexOf('_WORK') > -1) {
         return state.updateIn(

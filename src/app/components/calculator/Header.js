@@ -1,10 +1,12 @@
 import React from 'react'
-import InputRange from 'react-input-range'
+import RangeElement from 'app/components/RangeElement'
 import './header.scss'
-import 'react-input-range/dist/react-input-range.css'
 
-const Header = () => (
-  <header className='calculator-header'>
+export default ({setComplexity, complexity}) => {
+  let count = complexity;
+
+  return (
+    <header className='calculator-header'>
     <h2 className='calculator-header-title  pull-left'>ig.PM</h2>
 
     <div className='calculator-header-content pull-right'>
@@ -16,12 +18,7 @@ const Header = () => (
       <div className='calculator-header-item complexity pull-left'>
         <label className='title'>Сложность</label>
 
-        <InputRange
-          maxValue={1.5}
-          minValue={0}
-          defaultValue={0}
-          onChange={() => {}}
-       />
+        <RangeElement value={count}  onChange={(value) => setComplexity({count: value})} />
       </div>
 
       <div className='calculator-header-item header-time pull-left'>
@@ -48,6 +45,5 @@ const Header = () => (
       </div>
     </div>
   </header>
-)
-
-export default Header
+ )
+}

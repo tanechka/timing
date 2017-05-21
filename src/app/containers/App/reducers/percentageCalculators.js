@@ -6,6 +6,7 @@ export default function (state, action) {
       if (state.indexOf(action.id) !== -1) {
         break
       }
+
       return state.push(action.id)
     }
     case ActionTypes.REMOVE_PERCENTAGE_CALCULATOR: {

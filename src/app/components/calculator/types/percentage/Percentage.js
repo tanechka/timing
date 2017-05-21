@@ -14,6 +14,12 @@ export default ({
   removePercentageCalculator
 }) => {
   const value = data.get('value')
+  let avalibleCalculators =  calculators.filter(element => {
+    return (
+      element.get('type') === 'manual' &&
+      data.get('calculators').indexOf(element.get('id')) === -1
+    )
+  })
 
   return (
     <section className='percentage panel'>
@@ -67,15 +73,21 @@ export default ({
               label={<a className='link--search'/>}
             >
               {
-                calculators.map(calculator => (
-                  <li
-                    key={calculator.get('id')}
-                    className='list-item'
-                    onClick={addPercentageCalculator.bind(null, calculator.get('id'))}
-                  >
-                    { calculator.get('name') }
-                  </li>
-                ))
+
+                avalibleCalculators.size ?
+                  avalibleCalculators.map(calculator => (
+                    <li
+                      key={calculator.get('id')}
+                      className='list-item'
+                      onClick={addPercentageCalculator.bind(null, calculator.get('id'))}
+                    >
+                      { calculator.get('name')}
+                    </li>
+                  ))
+                :
+                <li className='list-item'>
+                  No items
+                </li>
               }
             </DropDown>
             <span className='type'>Работа</span>
