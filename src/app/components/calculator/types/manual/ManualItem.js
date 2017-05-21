@@ -8,14 +8,14 @@ import NumberFormat from 'react-number-format'
 
 const Style = {
   input: {
+    padding: 0,
     width: 30,
     background: 'none',
     border: 0,
     outline: 'none',
     color: 'inherit',
     textAlign: 'center',
-    borderBottom: '1px solid',
-    padding: 0
+    borderBottom: '1px solid'
   }
 }
 

@@ -14,13 +14,13 @@ export default function (calc) {
   }
 }
 
-function calculate (calculator) {
+function calculate (calculator, complexity) {
   const result = calculator.get('works').reduce((result, work) => {
-    const count = work.get('count')
+    const hours = work.get('hours') * work.get('count') * complexity
 
-    result.hours += work.get('hours') * count
-    result.price1 += (work.get('hourPrice1') || calculator.get('hourPrice1')) * count
-    result.price2 += (work.get('hourPrice2') || calculator.get('hourPrice2')) * count
+    result.hours += Math.ceil(hours)
+    result.price1 += (work.get('hourPrice1') || calculator.get('hourPrice1')) * hours
+    result.price2 += (work.get('hourPrice2') || calculator.get('hourPrice2')) * hours
 
     return result
   }, {

@@ -29,8 +29,8 @@ const Style = {
 
 class App extends React.Component {
   static propTypes = {
+    complexity: React.PropTypes.number,
     calculators: React.PropTypes.object.isRequired,
-    timestamp: React.PropTypes.number,
     checkWorking: React.PropTypes.func,
     addCalculator: React.PropTypes.func,
     removeCalculator: React.PropTypes.func,
@@ -41,8 +41,7 @@ class App extends React.Component {
     updateCalculatorWork: React.PropTypes.func,
     addPercentageCalculator: React.PropTypes.func,
     removePercentageCalculator: React.PropTypes.func,
-    setComplexity: React.PropTypes.func,
-    complexity: React.PropTypes.number
+    setComplexity: React.PropTypes.func
   }
 
   componentWillMount () {
@@ -51,7 +50,9 @@ class App extends React.Component {
 
   render () {
     const {
+      complexity,
       calculators,
+      setComplexity,
       addCalculator,
       removeCalculator,
       updateCalculator,
@@ -59,9 +60,7 @@ class App extends React.Component {
       addCalculatorWork,
       updateCalculatorWork,
       addPercentageCalculator,
-      removePercentageCalculator,
-      setComplexity,
-      complexity
+      removePercentageCalculator
     } = this.props
 
     return (
@@ -73,13 +72,13 @@ class App extends React.Component {
           {
             calculators.map((calculator) => {
               return renderCalculator({
+                calculators,
                 calculator,
                 removeCalculator,
                 updateCalculator,
                 removeCalculatorWork,
                 addCalculatorWork,
                 updateCalculatorWork,
-                calculators,
                 addPercentageCalculator,
                 removePercentageCalculator
               })
@@ -101,8 +100,7 @@ function renderCalculator ({
     calculators,
     addPercentageCalculator,
     removePercentageCalculator
-  })
-  {
+  }) {
   const id = calculator.get('id')
   let Calculator
 
@@ -135,9 +133,8 @@ function renderCalculator ({
 
 export default connect(
   state => ({
-    calculators: selectors.calculators(state[constants.REDUCER_NAME]),
-    timestamp: selectors.timestamp(state[constants.REDUCER_NAME]),
-    complexity: selectors.complexity(state[constants.REDUCER_NAME])
+    complexity: selectors.complexity(state[constants.REDUCER_NAME]),
+    calculators: selectors.calculators(state[constants.REDUCER_NAME])
   }),
   actions
 )(App)

@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberFormat from 'react-number-format'
 import './index.scss'
 
 export default class DropDown extends React.PureComponent {
@@ -14,33 +15,36 @@ export default class DropDown extends React.PureComponent {
     this.setState({value: this.props.value || 0})
   }
 
-  increment = () => {
+  change(diff) {
+    const value = this.state.value * 1 + diff
+
     this.setState({
-      value: this.state.value + 1
+      value
     })
 
-    this.props.onChange(this.state.value)
+    this.props.onChange(value)
+  }
+
+  increment = () => {
+    this.change(1)
   }
 
   decrement = () => {
     if (this.state.value > 0) {
-      this.setState({
-        value: this.state.value - 1
-      })
-
-      this.props.onChange(this.state.value)
+      this.change(-1)
     }
   }
 
-  handleChange = () => {
-    this.props.onChange(event.target.value)
+  handleChange = ({target}) => {
+    this.setState({value: target.value})
+    this.props.onChange(target.value)
   }
 
   render () {
     return (
       <div className='increment-decrement'>
         <button className='button button--increase' onClick={this.decrement}>-</button>
-        <input onChange = { this.handleChange} className='value' value={this.state.value}/>
+        <NumberFormat onChange = { this.handleChange} className='value' value={this.state.value}/>
         <button className='button button--decrease' onClick={this.increment}>+</button>
       </div>
     )

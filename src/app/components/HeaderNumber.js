@@ -10,7 +10,8 @@ const Style = {
   width: 42,
   textAlign: 'center',
   padding: 0,
-  marginTop: 3
+  marginTop: 3,
+  fontWeight: 700
 }
 
 export default (props) => (
