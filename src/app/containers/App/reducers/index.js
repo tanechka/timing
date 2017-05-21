@@ -1,6 +1,8 @@
 import { fromJS } from 'immutable'
+import * as CalculatorTypes from 'app/constants/CalculatorTypes'
 import calculator from 'app/services/calculator'
 import ManualCalculator from 'app/factories/ManualCalculator'
+import PercentageCalculator from 'app/factories/PercentageCalculator'
 import * as ActionTypes from '../constants'
 import * as selectors from '../selectors'
 import worksReducer from './works'
@@ -25,9 +27,11 @@ export default function (state = initialState, action) {
       return state.set('calculators', calculator(calculators, selectors.findIndexById(calculators, action.id)))
     }
     case ActionTypes.ADD_CALCULATOR: {
+      const Calculator = action.payload.type === CalculatorTypes.MANUAL ? ManualCalculator : PercentageCalculator
+
       return state.updateIn(
         ['calculators'],
-        calculators => calculators.push(fromJS(new ManualCalculator))
+        calculators => calculators.push(fromJS(new Calculator))
       )
     }
     case ActionTypes.UPDATE_CALCULATOR: {

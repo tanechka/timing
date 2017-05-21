@@ -14,9 +14,12 @@ export function calculateCalculator (id) {
   }
 }
 
-export function addCalculator () {
+export function addCalculator (type) {
   return {
-    type: ActionTypes.ADD_CALCULATOR
+    type: ActionTypes.ADD_CALCULATOR,
+    payload: {
+      type
+    }
   }
 }
 

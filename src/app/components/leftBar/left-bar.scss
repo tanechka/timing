@@ -10,17 +10,39 @@ $width-left-bar: 70px;
   bottom: 0;
   top: 0;
 
-  .logo,
-  .link {
+  .logo {
     display: block;
     width: $width-left-bar;
     height: $width-left-bar;
     background: url("../../../assets/images/logo.png") no-repeat;
   }
 
-  .link {
-    background: url("../../../assets/images/calculator.png") center no-repeat;
+  .manual, .percentage {
+    position: relative;
+    display: block;
     width: 66px;
-    border-left: 4px solid $blue;
+    height: 66px;
+
+    &:hover {
+      background-color: #2f4358;
+
+      &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: $blue;
+      }
+    }
+  }
+
+  .manual {
+    background: url("../../../assets/images/manual.png") center no-repeat;
+  }
+
+  .percentage {
+    background: url("../../../assets/images/percentage.png") center no-repeat;
   }
 }

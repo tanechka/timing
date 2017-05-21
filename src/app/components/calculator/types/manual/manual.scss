@@ -1,6 +1,6 @@
 @import "app/variables";
 
-.manual {
+:local(.manual) {
   padding: 0 20px;
   border-left: 7px solid $mint;
 
