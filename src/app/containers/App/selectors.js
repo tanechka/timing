@@ -1,8 +1,11 @@
+import {REDUCER_NAME} from './constants'
+
 export function timestamp (state) {
   return state.get('timestamp')
 }
 
 export function calculators (state) {
+  state = state[REDUCER_NAME] === void 0 ? state : state[REDUCER_NAME]
   return state.get('calculators')
 }
 

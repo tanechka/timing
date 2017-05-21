@@ -4,22 +4,7 @@ import ManualItem from './ManualItem'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
-import NumberFormat from 'react-number-format'
-
-const Style = {
-  input: {
-    background: 'none',
-    border: 'none',
-    outline: 'none',
-    borderBottom: '1px solid',
-    // fontWeight: 'inherit',
-    color: 'inherit',
-    width: 42,
-    textAlign: 'center',
-    padding: 0,
-    marginTop: 3
-  }
-}
+import HeaderNumber from 'app/components/HeaderNumber'
 
 export default ({
   data,
@@ -29,7 +14,6 @@ export default ({
   addCalculatorWork,
   updateCalculatorWork
   }) => (
-    
   <section className='manual panel'>
     <table className='table'>
       <thead className='panel-heading'>
@@ -55,17 +39,15 @@ export default ({
         </th>
         <th>{data.get('hours')}</th>
         <th>
-          <NumberFormat
+          <HeaderNumber
             thousandSeparator=" "
-            style={Style.input}
             onChange={(e, value) => updateCalculator({hourPrice1: value})}
             value={data.get('hourPrice1')}
           />
         </th>
         <th>
-          <NumberFormat
+          <HeaderNumber
             thousandSeparator=" "
-            style={Style.input}
             onChange={(e, value) => updateCalculator({hourPrice2: value})}
             value={data.get('hourPrice2')}
           />

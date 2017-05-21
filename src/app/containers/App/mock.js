@@ -1,4 +1,3 @@
-import * as  CalculatorTypes from '../../constants/CalculatorTypes'
 import ManualCalculator from '../../factories/ManualCalculator'
 import Work from '../../factories/Work'
 import PercentageCalculator from '../../factories/PercentageCalculator'
@@ -31,7 +30,10 @@ export default {
       ]
     }),
     new PercentageCalculator({
-      name: 'Техническое задание'
+      name: 'Техническое задание',
+      hourPrice1: 350,
+      hourPrice2: 700,
+      calculators: [1]
     })
   ]
 }

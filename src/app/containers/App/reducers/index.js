@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
           works => worksReducer(works, action)
         )
       }
-      if(action.calculatorId !== void 0 && action.type.indexOf('_PERCENTAGE') > -1) {
+      if (action.calculatorId !== void 0 && action.type.indexOf('_PERCENTAGE') > -1) {
         return state.updateIn(
           ['calculators', findCalculatorIndex(state, action.calculatorId), 'calculators'],
           calculators => percentageCalculatorReducer(calculators, action)

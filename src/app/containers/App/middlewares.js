@@ -1,10 +1,13 @@
+import { MANUAL } from 'app/constants/CalculatorTypes'
 import * as ActionTypes from './constants'
 import * as actions from './actions'
 import _throttle from 'lodash/throttle'
+import * as selectors from './selectors'
 
 const throttleCaclulate = _throttle(dispatch => dispatch(actions.calculateCalculator()), 200)
 
-export default ({dispatch}) => next => action => {
+export default state => next => action => {
+  const {dispatch} = state
   let calculatorId = action.id
 
   switch (action.type) {
@@ -25,8 +28,21 @@ export default ({dispatch}) => next => action => {
     }
     case ActionTypes.LIST_CALCULATOR:
     case ActionTypes.REMOVE_CALCULATOR: {
-      throttleCaclulate(dispatch)
-      break
+      const result = next(action)
+      const afterCalculate = []
+
+      selectors.calculators(state.getState()).forEach(calculator => {
+        const calculateFunction = () => dispatch(actions.calculateCalculator(calculator.get('id')))
+        if (calculator.get('type') === MANUAL) {
+          calculateFunction()
+        }
+        else {
+          afterCalculate.push(calculateFunction)
+        }
+      })
+      afterCalculate.forEach(calculate => calculate())
+
+      return result
     }
   }
   return next(action)

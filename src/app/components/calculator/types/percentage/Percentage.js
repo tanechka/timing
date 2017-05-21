@@ -2,60 +2,83 @@ import React from 'react'
 import './percentage.scss'
 import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
+import HeaderNumber from 'app/components/HeaderNumber'
+import format from 'app/services/format'
 
-const Percentage = ({
+export default ({
   data,
-  removeCalculator,
-  upadateCalculator,
   calculators,
+  removeCalculator,
+  updateCalculator,
   addPercentageCalculator
-  }) => (
+}) => {
+  const value = data.get('value')
 
-  <section className='percentage panel'>
-    <table className='table'>
-      <thead className='panel-heading'>
+  return (
+    <section className='percentage panel'>
+      <table className='table'>
+        <thead className='panel-heading'>
         <tr>
-          <th colSpan='2'>
-          <h2 className='title'>
-            <DropDown
-              className='actions'
-              label={<span className='icon-setting'/>}
-            >
-              <li onClick={removeCalculator} className='list-item'>
-                удалить
-              </li>
-              <li onClick={() => console.log('copy')} className='list-item'>
-                копировать
-              </li>
-            </DropDown>
-
-            <ClickEditable onChange={() => {}} value={data.get('name')}/>
-          </h2>
+          <th>
+            <h2 className='title'>
+              <DropDown
+                className='actions'
+                label={<span className='icon-setting'/>}
+              >
+                <li onClick={removeCalculator} className='list-item'>
+                  удалить
+                </li>
+                <li onClick={() => console.log('copy')} className='list-item'>
+                  копировать
+                </li>
+              </DropDown>
+              <ClickEditable onChange={() => {}} value={data.get('name')}/>
+            </h2>
           </th>
-          <th>20</th>
-          <th><ClickEditable onChange={() => {}} value={data.get('hourPrice1')} /></th>
-          <th><ClickEditable onChange={() => {}} value={data.get('hourPrice2')} /></th>
-          <th>5700</th>
-          <th>10700</th>
+          <th>
+            <HeaderNumber
+              value={data.get('value')}
+              onChange={(e, value) => updateCalculator({value})}
+            />
+          </th>
+          <th>{data.get('hours')}</th>
+          <th>
+            <HeaderNumber
+              onChange={(e, hourPrice1) => updateCalculator({hourPrice1})}
+              value={data.get('hourPrice1')}
+            />
+          </th>
+          <th>
+            <HeaderNumber
+              onChange={(e, hourPrice2) => updateCalculator({hourPrice2})}
+              value={data.get('hourPrice2')}
+            />
+          </th>
+          <th>{format.number(data.get('price1'))}</th>
+          <th>{format.number(data.get('price2'))}</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr>
           <td>
             <DropDown
               className='actions'
-              label={<a className='link--search' />}
+              label={<a className='link--search'/>}
             >
               {
-                calculators.map((calculator) => {
-                  return <li className='list-item' onClick={() => { addPercentageCalculator(calculator.get('id'))}}>
-                   { calculator.get('name') }
+                calculators.map(calculator => (
+                  <li
+                    key={calculator.get('id')}
+                    className='list-item'
+                    onClick={addPercentageCalculator.bind(null, calculator.get('id'))}
+                  >
+                    { calculator.get('name') }
                   </li>
-                })
+                ))
               }
             </DropDown>
             <span className='type'>Работа</span>
-            <span className='view' />
+            <span className='view'/>
           </td>
           <td>Количество</td>
           <td>Время</td>
@@ -64,7 +87,6 @@ const Percentage = ({
           <td>Цена 1</td>
           <td>Цена 2</td>
         </tr>
-
         {
           data.get('calculators').map(id => {
             const calculator = calculators.find(calculator => calculator.get('id') === id)
@@ -74,16 +96,15 @@ const Percentage = ({
             }
 
             return (
-              <tr>
+              <tr key={calculator.get('id')}>
                 <td><a className="link--close"></a>{calculator.get('name')}</td>
               </tr>
             )
           })
         }
 
-      </tbody>
-    </table>
-  </section>
-)
-
-export default Percentage
+        </tbody>
+      </table>
+    </section>
+  )
+}
