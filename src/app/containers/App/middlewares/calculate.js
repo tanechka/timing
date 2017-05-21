@@ -1,8 +1,8 @@
 import { MANUAL } from 'app/constants/CalculatorTypes'
-import * as ActionTypes from './constants'
-import * as actions from './actions'
+import * as ActionTypes from '../constants'
+import * as actions from '../actions'
 import _throttle from 'lodash/throttle'
-import * as selectors from './selectors'
+import * as selectors from '../selectors'
 
 const throttleCaclulate = _throttle(dispatch => dispatch(actions.calculateCalculator()), 200)
 

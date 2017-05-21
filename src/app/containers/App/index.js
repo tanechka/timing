@@ -15,7 +15,7 @@ import * as selectors from './selectors'
 import mock from './mock'
 
 RCR.reducers.add(constants.REDUCER_NAME, reducers)
-RCR.middlewares.push(middlewares);
+Array.prototype.push.apply(RCR.middlewares, middlewares);
 
 const Style = {
   wrap: {
@@ -39,7 +39,8 @@ class App extends React.Component {
     removeCalculatorWork: React.PropTypes.func,
     addCalculatorWork: React.PropTypes.func,
     updateCalculatorWork: React.PropTypes.func,
-    addPercentageCalculator: React.PropTypes.func
+    addPercentageCalculator: React.PropTypes.func,
+    removePercentageCalculator: React.PropTypes.func
   }
 
   componentWillMount () {
@@ -55,7 +56,8 @@ class App extends React.Component {
       removeCalculatorWork,
       addCalculatorWork,
       updateCalculatorWork,
-      addPercentageCalculator
+      addPercentageCalculator,
+      removePercentageCalculator
     } = this.props
 
     return (
@@ -74,7 +76,8 @@ class App extends React.Component {
                 addCalculatorWork,
                 updateCalculatorWork,
                 calculators,
-                addPercentageCalculator
+                addPercentageCalculator,
+                removePercentageCalculator
               })
             })
           }
@@ -92,7 +95,8 @@ function renderCalculator ({
     removeCalculatorWork,
     updateCalculatorWork,
     calculators,
-    addPercentageCalculator
+    addPercentageCalculator,
+    removePercentageCalculator
   })
   {
   const id = calculator.get('id')
@@ -120,6 +124,7 @@ function renderCalculator ({
       updateCalculatorWork={updateCalculatorWork.bind(null, id)}
       calculators={calculators}
       addPercentageCalculator={addPercentageCalculator.bind(null, id)}
+      removePercentageCalculator={removePercentageCalculator.bind(null, id)}
     />
   )
 }

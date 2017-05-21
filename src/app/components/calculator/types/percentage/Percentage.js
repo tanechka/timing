@@ -10,7 +10,8 @@ export default ({
   calculators,
   removeCalculator,
   updateCalculator,
-  addPercentageCalculator
+  addPercentageCalculator,
+  removePercentageCalculator
 }) => {
   const value = data.get('value')
 
@@ -96,8 +97,17 @@ export default ({
             }
 
             return (
-              <tr key={calculator.get('id')}>
-                <td><a className="link--close"></a>{calculator.get('name')}</td>
+              <tr>
+                <td><a className="link--close" onClick={ () => {
+                  removePercentageCalculator(calculator.get('id'))
+                }}>
+                </a>{calculator.get('name')}</td>
+                <td></td>
+                <td>{calculator.get('hours')}</td>
+                <td>{calculator.get('hourPrice1')}</td>
+                <td>{calculator.get('hourPrice2')}</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
             )
           })

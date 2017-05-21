@@ -1,8 +1,8 @@
-let id = 0
+import {guid} from '../utils'
 
 export default function Work (data) {
   return {
-    id: ++id,
+    id: guid(),
     name: '',
     hourPrice1: void 0,
     hourPrice2: void 0,
