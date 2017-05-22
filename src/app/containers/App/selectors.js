@@ -1,17 +1,23 @@
-import {REDUCER_NAME} from './constants'
+import { REDUCER_NAME } from './constants'
 
-export function timestamp (state) {
-  return state.get('timestamp')
+export function getRoot (state) {
+  return state[REDUCER_NAME] === void 0 ? state : state[REDUCER_NAME]
 }
-export function complexity(state) {
-  return state.get('complexity')
+
+export function result (state) {
+  return getRoot(state).get('result')
 }
-export function tags(state) {
-  return state.get('tags')
+
+export function complexity (state) {
+  return getRoot(state).get('complexity')
 }
+
+export function tags (state) {
+  return getRoot(state).get('tags')
+}
+
 export function calculators (state) {
-  state = state[REDUCER_NAME] === void 0 ? state : state[REDUCER_NAME]
-  return state.get('calculators')
+  return getRoot(state).get('calculators')
 }
 
 export function calculator (state, id) {

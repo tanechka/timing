@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable'
 import * as CalculatorTypes from 'app/constants/CalculatorTypes'
 import calculator from 'app/services/calculator'
+import CalculationResult from 'app/factories/CalculationResult'
 import ManualCalculator from 'app/factories/ManualCalculator'
 import PercentageCalculator from 'app/factories/PercentageCalculator'
 import * as ActionTypes from '../constants'
@@ -10,6 +11,7 @@ import percentageCalculatorReducer from './percentageCalculators'
 
 const initialState = fromJS({
   complexity: 1.2,
+  result: new CalculationResult(),
   tags: [],
   calculators: []
 })
@@ -23,15 +25,16 @@ export default function (state = initialState, action) {
       return state.merge(fromJS(action.payload))
     }
     case ActionTypes.CALCULATE_CALCULATOR: {
-      let calculators = selectors.calculators(state)
-      return state.set(
-        'calculators',
-        calculator(
-          calculators,
-          selectors.complexity(state),
-          selectors.findIndexById(calculators, action.id)
-        )
-      )
+      const currentCalculators = selectors.calculators(state)
+      const {calculators, result} = calculator({
+        result: selectors.result(state),
+        calculators: currentCalculators,
+        complexity: selectors.complexity(state),
+        index: selectors.findIndexById(currentCalculators, action.id)
+      })
+      return state
+        .set('result', result)
+        .set('calculators', calculators)
     }
     case ActionTypes.ADD_CALCULATOR: {
       const Calculator = action.payload.type === CalculatorTypes.MANUAL ? ManualCalculator : PercentageCalculator
