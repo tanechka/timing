@@ -30,6 +30,7 @@ const Style = {
 class App extends React.Component {
   static propTypes = {
     complexity: React.PropTypes.number,
+    result: React.PropTypes.object,
     tags: React.PropTypes.object,
     calculators: React.PropTypes.object.isRequired,
     checkWorking: React.PropTypes.func,
@@ -53,6 +54,7 @@ class App extends React.Component {
   render () {
     const {
       complexity,
+      result,
       tags,
       calculators,
       setComplexity,
@@ -71,7 +73,11 @@ class App extends React.Component {
       <div style={Style.wrap}>
         <LeftBar addCalculator={addCalculator}/>
         <div style={Style.content}>
-          <Header setComplexity={setComplexity} complexity={complexity}/>
+          <Header
+            setComplexity={setComplexity}
+            complexity={complexity}
+            result={result}
+          />
           <Tags tags={tags} updateTagCount={updateTagCount} />
           {
             calculators.map((calculator) => {
@@ -137,9 +143,10 @@ function renderCalculator ({
 
 export default connect(
   state => ({
-    complexity: selectors.complexity(state[constants.REDUCER_NAME]),
-    tags: selectors.tags(state[constants.REDUCER_NAME]),
-    calculators: selectors.calculators(state[constants.REDUCER_NAME])
+    result: selectors.result(state),
+    complexity: selectors.complexity(state),
+    tags: selectors.tags(state),
+    calculators: selectors.calculators(state)
   }),
   actions
 )(App)

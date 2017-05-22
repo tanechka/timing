@@ -38,7 +38,11 @@ export default ({
                   копировать
                 </li>
               </DropDown>
-              <ClickEditable style={{minWidth: 150}} onChange={name => updateCalculator({name})} value={data.get('name')}/>
+              <ClickEditable
+                style={{minWidth: 150}}
+                onChange={name => updateCalculator({name})}
+                value={data.get('name')}
+              />
             </h2>
           </th>
           <th>
@@ -73,20 +77,20 @@ export default ({
             >
               {
 
-                availableCalculators.size ?
-                  availableCalculators.map(calculator => (
-                    <li
-                      key={calculator.get('id')}
-                      className='list-item'
-                      onClick={addPercentageCalculator.bind(null, calculator.get('id'))}
-                    >
-                      { calculator.get('name')}
-                    </li>
-                  ))
-                :
-                <li className='list-item'>
-                  No items
-                </li>
+                availableCalculators.size ? availableCalculators.map(calculator => (
+                  <li
+                    key={calculator.get('id')}
+                    className='list-item'
+                    onClick={addPercentageCalculator.bind(null, calculator.get('id'))}
+                  >
+                    { calculator.get('name')}
+                  </li>
+                ))
+                : (
+                  <li className='list-item'>
+                    No items
+                  </li>
+                )
               }
             </DropDown>
             <span className='type'>Работа</span>
@@ -123,7 +127,6 @@ export default ({
             )
           })
         }
-
         </tbody>
       </table>
     </section>

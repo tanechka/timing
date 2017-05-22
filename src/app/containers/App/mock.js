@@ -7,19 +7,19 @@ const mock = {
   tags: [
     new Tag({
       color: "blue",
-      count: 20
+      count: 0
     }),
     new Tag({
       color: "green",
-      count: 15
+      count: 0
     }),
     new Tag({
       color: "orange",
-      count: 10
+      count: 0
     }),
     new Tag({
       color: "red",
-      count: 5
+      count: 0
     })
   ],
   calculators: [
@@ -41,6 +41,11 @@ const mock = {
         new Work({
           name: 'Сложная',
           count: 10,
+          hours: 6
+        }),
+        new Work({
+          name: 'Комплексная',
+          count: 1,
           hours: 16,
           hourPrice1: 550,
           hourPrice2: 900

@@ -1,6 +1,6 @@
 import {guid} from '../utils'
 
-export default function Tag(data) {
+export default function Tag (data) {
   return {
     id: guid(),
     color: '',
