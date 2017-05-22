@@ -12,7 +12,9 @@ export default ({
   updateCalculator,
   removeCalculatorWork,
   addCalculatorWork,
-  updateCalculatorWork
+  updateCalculatorWork,
+  tags,
+  addTagToWork
   }) => (
   <section className={`${Classes.manual} panel`}>
     <table className='table'>
@@ -75,6 +77,8 @@ export default ({
             removeCalculatorWork={removeCalculatorWork.bind(null, work.get('id'))}
             updateCalculatorWork={updateCalculatorWork.bind(null, work.get('id'))}
             className='manual-specific--blue manual-specific'
+            tags={tags}
+            addTagToWork={addTagToWork.bind(null, work.get('id'))}
           />
         ))
       }

@@ -19,11 +19,13 @@ Array.prototype.push.apply(RCR.middlewares, middlewares);
 
 const Style = {
   wrap: {
+    background: '#394e63'
     //overflow: 'auto'
   },
   content: {
     background: '#eeeeee',
-    marginLeft: 70
+    marginLeft: 70,
+    zIndex: 1
   }
 }
 
@@ -43,7 +45,8 @@ class App extends React.Component {
     addPercentageCalculator: React.PropTypes.func,
     removePercentageCalculator: React.PropTypes.func,
     setComplexity: React.PropTypes.func,
-    updateTagCount: React.PropTypes.func
+    updateTagCount: React.PropTypes.func,
+    addTagToWork: React.PropTypes.func
   }
 
   componentWillMount () {
@@ -64,7 +67,8 @@ class App extends React.Component {
       updateCalculatorWork,
       addPercentageCalculator,
       removePercentageCalculator,
-      updateTagCount
+      updateTagCount,
+      addTagToWork
     } = this.props
 
     return (
@@ -84,7 +88,9 @@ class App extends React.Component {
                 addCalculatorWork,
                 updateCalculatorWork,
                 addPercentageCalculator,
-                removePercentageCalculator
+                removePercentageCalculator,
+                tags,
+                addTagToWork
               })
             })
           }
@@ -103,7 +109,9 @@ function renderCalculator ({
     updateCalculatorWork,
     calculators,
     addPercentageCalculator,
-    removePercentageCalculator
+    removePercentageCalculator,
+    tags,
+    addTagToWork
   }) {
   const id = calculator.get('id')
   let Calculator
@@ -131,6 +139,8 @@ function renderCalculator ({
       calculators={calculators}
       addPercentageCalculator={addPercentageCalculator.bind(null, id)}
       removePercentageCalculator={removePercentageCalculator.bind(null, id)}
+      tags={tags}
+      addTagToWork={addTagToWork.bind(null, id)}
     />
   )
 }

@@ -7,7 +7,7 @@ import App from './containers/App'
 import './index.scss'
 
 render(
-  <Provider store={RCR.store}>
+  <Provider store={RCR.store} >
     <App />
   </Provider>,
   document.getElementById('app')

@@ -19,10 +19,25 @@ const Style = {
   }
 }
 
-export default ({className, calculator, data, removeCalculatorWork, updateCalculatorWork}) => {
+export default ({
+  className,
+  calculator,
+  data,
+  removeCalculatorWork,
+  updateCalculatorWork,
+  tags,
+  addTagToWork
+  }) => {
   const hourPrice1 = data.get('hourPrice1') || calculator.get('hourPrice1')
   const hourPrice2 = data.get('hourPrice2') || calculator.get('hourPrice2')
   const count = data.get('count')
+  let tagWork = tags.first()
+
+  if (data.get('tagId')) {
+    tagWork = tags.find((tag) => {
+      return data.get('tagId') == tag.get('id')
+    })
+  }
 
   return (
     <tr className={className}>
@@ -30,9 +45,9 @@ export default ({className, calculator, data, removeCalculatorWork, updateCalcul
         <a className='link--close' onClick={removeCalculatorWork}/>
         <DropDown
           className='actions'
-          label={<span className='view'/>}
+          label={<span className={ data.get('tagId') ? tagWork.get('color') + ' view' : 'view' }/>}
         >
-          <CircleColorPicker />
+          <CircleColorPicker tags={tags} addTagToWork={addTagToWork} />
         </DropDown>
         <span className='type'>
         <ClickEditable

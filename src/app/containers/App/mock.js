@@ -31,19 +31,22 @@ const mock = {
         new Work({
           name: 'Простая',
           count: 20,
-          hours: 2
+          hours: 2,
+          tagId: ''
         }),
         new Work({
           name: 'Нормальная',
           count: 5,
-          hours: 4
+          hours: 4,
+          tagId: ''
         }),
         new Work({
           name: 'Сложная',
           count: 10,
           hours: 16,
           hourPrice1: 550,
-          hourPrice2: 900
+          hourPrice2: 900,
+          tagId: ''
         })
       ]
     }),

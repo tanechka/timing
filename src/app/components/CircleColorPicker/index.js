@@ -1,27 +1,28 @@
 import React from 'react'
 import './index.scss'
 
-export default class CircleColorPicker extends React.PureComponent {
-  componentWillMount () {
-    const colors = ['#4aa9e4', '#2ecc71', '#ff9800', '#f44336']
-    const colorItems = colors.map((color) =>
-      <li style={{backgroundColor: color, borderColor: color}} key={color} />
-    )
-    this.setState({ colorItems })
-  }
+export default ({
+  tags,
+  addTagToWork
+}) => {
 
-  handleClick = (color, event) => {
-    console.log('click')
-    //  this.setState({ color: this.state.color.hex });
-  }
-
-  render () {
+  let colorItems = tags.map((tag) => {
     return (
-      <div>
-        <ul className='color-picker'>
-          {this.state.colorItems}
-        </ul>
-      </div>
+      <li className={tag.get('color')}
+        key={tag.get('id')}
+        onClick={ ()=>{ 
+          addTagToWork(tag.get('id'))
+        }
+      }
+      />
     )
-  }
+  })
+
+  return (
+    <div>
+      <ul className='color-picker'>
+        { colorItems }
+      </ul>
+    </div>
+  )
 }

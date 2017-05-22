@@ -1,3 +1,5 @@
+@import "app/variables";
+
 .color-picker {
   list-style: none;
   padding: 0;
@@ -13,6 +15,25 @@
     cursor: pointer;
     display: inline-block;
     margin: 10px 5px;
+
+    &.blue{
+      background: $blue;
+      border: 1px solid $blue;
+    }
+
+    &.green{
+      background: $green;
+      border: 1px solid $green;
+    }
+
+    &.orange{
+      background: $orange;
+      border: 1px solid $orange;
+    }
+    &.red{
+      background: $red;
+      border: 1px solid $red;
+    }
 
     &:hover {
       transform: scale(1.2);

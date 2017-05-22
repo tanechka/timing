@@ -8,6 +8,7 @@ export default function Work (data) {
     hourPrice2: void 0,
     count: 0,
     hours: 0,
+    tagId: '',
     ...data
   }
 }

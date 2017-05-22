@@ -1,10 +1,8 @@
 $title-color: #4f6173;
-$blue: #3498db;
 $btn-color: #969ead;
 $input-color: #abb3c2;
-$green: #2ecc71;
-$orange: #ff9800;
-$red: #f44336;
+@import "app/variables";
+
 
 .calculator-tags {
   overflow: hidden;

@@ -11,10 +11,19 @@ export default function (state, action) {
     case ActionTypes.REMOVE_CALCULATOR_WORK: {
       return state.delete(selectors.findIndexById(state, action.id))
     }
+
     case ActionTypes.UPDATE_CALCULATOR_WORK: {
       return state.updateIn(
         [selectors.findIndexById(state, action.id)], work =>
         work.merge(action.payload)
+      )
+    }
+
+    case ActionTypes.ADD_TAG_TO_WORK: {
+      debugger;
+      return state.updateIn(
+        [selectors.findIndexById(state, action.id)], work =>
+        work.set('tagId', action.tagId)
       )
     }
   }

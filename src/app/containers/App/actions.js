@@ -93,3 +93,12 @@ export function updateTagCount(id, payload) {
     payload
   }
 }
+
+export function addTagToWork(calculatorId, id, tagId) {
+  return {
+    type: ActionTypes.ADD_TAG_TO_WORK,
+    calculatorId,
+    id,
+    tagId
+  }
+}

@@ -63,26 +63,26 @@
       border-radius: 20px;
       margin: 0 10px;
       vertical-align: middle;
+      background: #ccc;
+
+      &.blue {
+        background: $blue;
+      }
+
+      &.green {
+        background: $green;
+      }
+
+      &.orange {
+        background: $orange;
+      }
+      &.red {
+        background: $red;
+      }
     }
 
     .type {
       vertical-align: -2px;
-    }
-
-    &--blue {
-      .view {
-        background: $blue;
-      }
-    }
-    &--green {
-      .view {
-        background: $green;
-      }
-    }
-    &--white {
-      .view {
-        background: $white;
-      }
     }
   }
 
