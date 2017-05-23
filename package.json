@@ -26,7 +26,6 @@
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
