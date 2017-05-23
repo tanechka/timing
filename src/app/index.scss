@@ -67,10 +67,41 @@ table {
   tr {
     td {
       border-top: 1px solid #ddd;
+      position: relative;
 
       &:first-child {
         padding-left: 20px;
       }
     }
   }
+}
+
+.tooltip {
+  border: 2px solid #1abc9c;
+  color: #1abc9c;
+  width: 15px;
+  height: 15px;
+  border-radius: 12px;
+  line-height: 17px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.section-with-tooltip {
+  position: relative;
+  display: inline-block;
+
+  .tooltip {
+    position: absolute;
+    right: -25px;
+    top: -2px;
+    margin: 0;
+  }
+}
+
+.sum {
+  vertical-align: -1px;
 }

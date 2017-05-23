@@ -5,6 +5,7 @@ import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import format from 'app/services/format'
 import HeaderNumber from 'app/components/HeaderNumber'
+import ReactTooltip from 'react-tooltip'
 
 export default ({
   data,
@@ -39,7 +40,7 @@ export default ({
             <ClickEditable style={{minWidth: 150}} onChange={(name) => updateCalculator({name})} value={data.get('name')}/>
           </h2>
         </th>
-        <th>{data.get('hours')}</th>
+        <th><span  className="sum">&#931;</span> {data.get('hours')}</th>
         <th>
           <HeaderNumber
             thousandSeparator=" "
@@ -54,8 +55,8 @@ export default ({
             value={data.get('hourPrice2')}
           />
         </th>
-        <th>{format.number(data.get('price1'))}</th>
-        <th>{format.number(data.get('price2'))}</th>
+        <th><span className="sum">&#931;</span> {format.number(data.get('price1'))}</th>
+        <th><span className="sum">&#931;</span> {format.number(data.get('price2'))}</th>
       </tr>
       </thead>
       <tbody>
@@ -63,10 +64,10 @@ export default ({
         <td>Работа</td>
         <td>Количество</td>
         <td>Время</td>
-        <td>Цена час 1</td>
-        <td>Цена час 2</td>
-        <td>Цена 1</td>
-        <td>Цена 2</td>
+        <td><span className='section-with-tooltip'>Цена час 1 <p className="tooltip" data-tip="Себестоимость">i</p></span></td>
+        <td><span className='section-with-tooltip'>Цена час 2 <p className="tooltip" data-tip="Отпускная цена">i</p></span></td>
+        <td><span className='section-with-tooltip'>Цена 1 <p className="tooltip" data-tip="Себестоимость = Цена час 1 * Количество">i</p></span></td>
+        <td><span className='section-with-tooltip'>Цена 2 <p className="tooltip" data-tip="Себестоимость = Цена час 2 * Количество">i</p></span></td>
       </tr>
       {
         data.get('works').map((work) => (
@@ -84,5 +85,6 @@ export default ({
       }
       </tbody>
     </table>
+    <ReactTooltip />
   </section>
 )

@@ -4,6 +4,7 @@ import DropDown from 'app/components/DropDown'
 import ClickEditable from 'app/components/ClickEditable'
 import HeaderNumber from 'app/components/HeaderNumber'
 import format from 'app/services/format'
+import ReactTooltip from 'react-tooltip'
 
 export default ({
   data,
@@ -96,8 +97,8 @@ export default ({
             <span className='type'>Работа</span>
             <span className='view'/>
           </td>
-          <td>Количество</td>
-          <td>Время</td>
+          <td>Количество, %</td>
+          <td><span className='section-with-tooltip'>Время<p className="tooltip" data-tip="% от времени задач">i</p></span></td>
           <td>Цена час 1</td>
           <td>Цена час 2</td>
           <td>Цена 1</td>
@@ -129,6 +130,7 @@ export default ({
         }
         </tbody>
       </table>
+      <ReactTooltip />
     </section>
   )
 }
