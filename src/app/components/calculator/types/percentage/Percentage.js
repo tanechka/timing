@@ -34,9 +34,6 @@ export default ({
                 <li onClick={removeCalculator} className='list-item'>
                   удалить
                 </li>
-                <li onClick={() => console.log('copy')} className='list-item'>
-                  копировать
-                </li>
               </DropDown>
               <ClickEditable
                 style={{minWidth: 150}}

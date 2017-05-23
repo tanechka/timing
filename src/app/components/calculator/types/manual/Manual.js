@@ -29,9 +29,6 @@ export default ({
               <li onClick={addCalculatorWork} className='list-item'>
                 добавить
               </li>
-              <li onClick={removeCalculator} className='list-item'>
-                удалить
-              </li>
               <li onClick={() => console.log('copy')} className='list-item'>
                 копировать
               </li>

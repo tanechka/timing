@@ -21,6 +21,7 @@ export default store => next => action => {
       if (action.payload !== void 0 && action.payload.name !== void 0) {
         break
       }
+    case ActionTypes.UPDATE_TAG_COUNT:
     case ActionTypes.SET_COMPLEXITY:
     case ActionTypes.ADD_CALCULATOR: {
       const result = next(action)
