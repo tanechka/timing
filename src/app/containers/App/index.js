@@ -19,13 +19,27 @@ Array.prototype.push.apply(RCR.middlewares, middlewares);
 
 const Style = {
   wrap: {
-    background: '#394e63'
-    //overflow: 'auto'
+    height: '100%',
+    minWidth: 960
   },
   content: {
     background: '#eeeeee',
     marginLeft: 70,
-    zIndex: 1
+    height: '100%'
+  },
+  leftBar: {
+    position: 'fixed'
+  },
+  header: {
+    background: '#eeeeee',
+    position: 'fixed',
+    height: 215,
+    right: 0,
+    left: 70,
+    zIndex: 1000
+  },
+  calculators: {
+    paddingTop: 215
   }
 }
 
@@ -75,31 +89,36 @@ class App extends React.Component {
 
     return (
       <div style={Style.wrap}>
-        <LeftBar addCalculator={addCalculator}/>
+        <LeftBar style={Style.leftBar} addCalculator={addCalculator}/>
         <div style={Style.content}>
-          <Header
-            setComplexity={setComplexity}
-            complexity={complexity}
-            result={result}
-          />
-          <Tags tags={tags} updateTagCount={updateTagCount} />
-          {
-            calculators.map((calculator) => {
-              return renderCalculator({
-                calculators,
-                calculator,
-                removeCalculator,
-                updateCalculator,
-                removeCalculatorWork,
-                addCalculatorWork,
-                updateCalculatorWork,
-                addPercentageCalculator,
-                removePercentageCalculator,
-                tags,
-                addTagToWork
+          <div style={Style.header}>
+            <Header
+              setComplexity={setComplexity}
+              complexity={complexity}
+              result={result}
+            />
+            <Tags tags={tags} updateTagCount={updateTagCount} />
+          </div>
+          <div style={Style.calculators}>
+            {
+              calculators.map((calculator) => {
+                return renderCalculator({
+                  calculators,
+                  calculator,
+                  removeCalculator,
+                  updateCalculator,
+                  removeCalculatorWork,
+                  addCalculatorWork,
+                  updateCalculatorWork,
+                  addPercentageCalculator,
+                  removePercentageCalculator,
+                  tags,
+                  addTagToWork
+                })
               })
-            })
-          }
+            }
+          </div>
+
         </div>
       </div>
     )

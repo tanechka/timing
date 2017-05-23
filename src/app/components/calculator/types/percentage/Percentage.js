@@ -25,7 +25,7 @@ export default ({
       <table className='table'>
         <thead className='panel-heading'>
         <tr>
-          <th>
+          <th className="name">
             <h2 className='title'>
               <DropDown
                 className='actions'

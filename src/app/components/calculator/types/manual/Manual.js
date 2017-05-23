@@ -20,7 +20,7 @@ export default ({
     <table className='table'>
       <thead className='panel-heading'>
       <tr>
-        <th colSpan='2'>
+        <th className="name">
           <h2 className='title'>
             <DropDown
               className='actions'
@@ -29,13 +29,14 @@ export default ({
               <li onClick={addCalculatorWork} className='list-item'>
                 добавить
               </li>
-              <li onClick={() => console.log('copy')} className='list-item'>
-                копировать
+              <li onClick={removeCalculator} className='list-item'>
+                удалить
               </li>
             </DropDown>
             <ClickEditable style={{minWidth: 150}} onChange={(name) => updateCalculator({name})} value={data.get('name')}/>
           </h2>
         </th>
+        <th></th>
         <th>{data.get('hours')}</th>
         <th>
           <HeaderNumber

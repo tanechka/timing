@@ -7,6 +7,13 @@
   .table {
     width: 100%;
 
+    th {
+      width: 10%;
+      &.name {
+        width: 40%;
+      }
+    }
+
     td {
       color: $text-color;
       font-size: 13px;
