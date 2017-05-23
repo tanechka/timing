@@ -15,7 +15,7 @@ export default ({setComplexity, complexity, result}) => {
       </div>
 
       <div className='calculator-header-item complexity pull-left'>
-        <label className='title'>Сложность</label>
+        <h3 className='title'>Сложность</h3>
 
         <RangeElement
           value={complexity}

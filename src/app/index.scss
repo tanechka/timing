@@ -47,6 +47,10 @@ body, input {
 
     th {
       padding: 10px 15px;
+      width: 10%;
+      &.name {
+        width: 40%;
+      }
     }
   }
 

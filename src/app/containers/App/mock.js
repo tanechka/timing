@@ -104,7 +104,7 @@ mock.calculators = [
   }),
   new PercentageCalculator(({
     name: 'Testing',
-    value: 5,
+    value: 20,
     hourPrice1: 350,
     hourPrice2: 700
   })),

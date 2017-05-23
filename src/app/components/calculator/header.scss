@@ -37,7 +37,7 @@ $width-left-bar: 70px;
   }
 
   .value {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     display: block;
     text-align: center;
@@ -46,7 +46,7 @@ $width-left-bar: 70px;
   .range,
   .price-internal,
   .price-final {
-    font-size: 10px;
+    font-size: 12px;
     display: block;
     margin-top: -1px;
     text-align: center;
@@ -63,7 +63,15 @@ $width-left-bar: 70px;
     padding: 0 20px;
     padding-top: 10px;
     min-height: 60px;
-    border-left: 1px solid #fff;
+    width: 60px;
+
+    &.total {
+      width: auto;
+    }
+
+    &.complexity {
+      width: 200px;
+    }
   }
 
   .InputRange {

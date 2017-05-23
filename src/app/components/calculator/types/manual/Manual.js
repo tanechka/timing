@@ -38,7 +38,7 @@ export default ({
           </h2>
         </th>
         <th></th>
-        <th><span  className="sum">&#931;</span> {data.get('hours')}</th>
+        <th><span className="sum">&#931;</span> {data.get('hours')}</th>
         <th>
           <HeaderNumber
             thousandSeparator=" "

@@ -19,8 +19,7 @@ Array.prototype.push.apply(RCR.middlewares, middlewares);
 
 const Style = {
   wrap: {
-    height: '100%',
-    minWidth: 960
+    height: '100%'
   },
   content: {
     background: '#eeeeee',
@@ -28,7 +27,8 @@ const Style = {
     height: '100%'
   },
   leftBar: {
-    position: 'fixed'
+    position: 'fixed',
+    zIndex: 1000
   },
   header: {
     background: '#eeeeee',
