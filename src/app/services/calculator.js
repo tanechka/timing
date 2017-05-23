@@ -1,8 +1,8 @@
 import { Map } from 'immutable'
 import CalculationResult from 'app/factories/CalculationResult'
 
-export default function calculatorService ({calculators, complexity, index}) {
-  let _calculate = calculate.bind(null, calculators, complexity)
+export default function calculatorService ({calculators, complexity, tags, index}) {
+  let _calculate = calculate.bind(null, {calculators, complexity, tags})
   let nextCalculators
 
   if (index !== void 0) {
@@ -41,7 +41,7 @@ function getHoursFromTo (result) {
   }
 }
 
-function calculate (calculators, complexity, calculator) {
+function calculate (props, calculator) {
   const type = calculator.get('type')
-  return calculatorService[type] ? calculatorService[type](calculator, complexity, calculators) : calculator
+  return calculatorService[type] ? calculatorService[type](calculator, props) : calculator
 }

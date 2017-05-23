@@ -28,6 +28,7 @@ export default function (state = initialState, action) {
       const currentCalculators = selectors.calculators(state)
       const {calculators, result} = calculator({
         result: selectors.result(state),
+        tags: selectors.tags(state),
         calculators: currentCalculators,
         complexity: selectors.complexity(state),
         index: selectors.findIndexById(currentCalculators, action.id)

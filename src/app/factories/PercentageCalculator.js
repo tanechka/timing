@@ -14,7 +14,7 @@ export default function (calc) {
   }
 }
 
-function calculate (calculator, complexity, calculators) {
+function calculate (calculator, {calculators}) {
   const coeff = calculator.get('value') / 100
   const result = calculator.get('calculators').reduce((result, calculatorId) => {
     let relativeCalculator = calculators.find(calculator => calculator.get('id') === calculatorId)
