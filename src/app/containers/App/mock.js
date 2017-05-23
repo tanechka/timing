@@ -4,6 +4,9 @@ import Tag from '../../factories/Tag'
 import PercentageCalculator from '../../factories/PercentageCalculator'
 import {MANUAL, PERCENTAGE} from 'app/constants/CalculatorTypes'
 
+const PRICE_1 = 10
+const PRICE_2 = 20
+
 function getWorkList (mock) {
   return [
     new Work({
@@ -68,57 +71,57 @@ mock.calculators = [
   new PercentageCalculator({
     name: 'Technical Requirements',
     value: 5,
-    hourPrice1: 350,
-    hourPrice2: 700,
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2,
     calculators: []
   }),
   new PercentageCalculator({
     name: 'Specification',
     value: 15,
-    hourPrice1: 350,
-    hourPrice2: 700
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2
   }),
   new ManualCalculator({
     name: 'Software Design',
-    hourPrice1: 350,
-    hourPrice2: 700,
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'GUI Design',
-    hourPrice1: 350,
-    hourPrice2: 700,
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'Software Construction',
-    hourPrice1: 350,
-    hourPrice2: 700,
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'GUI Construction',
-    hourPrice1: 350,
-    hourPrice2: 700,
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new PercentageCalculator(({
     name: 'Testing',
     value: 20,
-    hourPrice1: 350,
-    hourPrice2: 700
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2
   })),
   new PercentageCalculator({
     name: 'Quality Assurance',
     value: 10,
-    hourPrice1: 350,
-    hourPrice2: 700
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2
   }),
   new PercentageCalculator(({
     name: 'Deploying',
     value: 2,
-    hourPrice1: 350,
-    hourPrice2: 700
+    hourPrice1: PRICE_1,
+    hourPrice2: PRICE_2
   }))
 ]
 

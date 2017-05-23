@@ -26,7 +26,7 @@ export default ({setComplexity, complexity, result}) => {
       <div className='calculator-header-item header-time pull-left'>
         <h3 className='title'>Время</h3>
         <span className='value'>{format.hours(result.get('hours'))}</span>
-        <span className='range'>{format.hours(result.get('hoursFrom'))}-{format.hours(result.get('hoursTo'))}</span>
+        <span className='range'>{format.hours(result.get('hoursFrom'))} - {format.hours(result.get('hoursTo'))}</span>
       </div>
 
       <div className='calculator-header-item price pull-left'>

@@ -50,6 +50,7 @@ $width-left-bar: 70px;
     display: block;
     margin-top: -1px;
     text-align: center;
+    white-space: nowrap;
   }
 
   .title {
@@ -67,6 +68,10 @@ $width-left-bar: 70px;
 
     &.total {
       width: auto;
+    }
+
+    &.header-time {
+      width: 80px;
     }
 
     &.complexity {
