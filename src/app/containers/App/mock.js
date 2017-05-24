@@ -3,6 +3,7 @@ import Work from '../../factories/Work'
 import Tag from '../../factories/Tag'
 import PercentageCalculator from '../../factories/PercentageCalculator'
 import {MANUAL, PERCENTAGE} from 'app/constants/CalculatorTypes'
+import variables from  '!!sass-variable-loader!app/variables.scss'
 
 const PRICE_1 = 10
 const PRICE_2 = 20
@@ -70,6 +71,7 @@ const mock = {
 mock.calculators = [
   new PercentageCalculator({
     name: 'Technical Requirements',
+    color: variables.blue,
     value: 5,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2,
@@ -77,48 +79,56 @@ mock.calculators = [
   }),
   new PercentageCalculator({
     name: 'Specification',
+    color: variables.blue,
     value: 15,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2
   }),
   new ManualCalculator({
     name: 'Software Design',
+    color: variables.mint,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'GUI Design',
+    color: variables.mint,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'Software Construction',
+    color: variables.orange,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new ManualCalculator({
     name: 'GUI Construction',
+    color: variables.orange,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2,
     works: getWorkList(mock)
   }),
   new PercentageCalculator(({
     name: 'Testing',
+    color: variables.orange,
     value: 20,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2
   })),
   new PercentageCalculator({
     name: 'Quality Assurance',
+    color: variables.yellow,
     value: 10,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2
   }),
   new PercentageCalculator(({
     name: 'Deploying',
+    color: variables.yellow,
     value: 2,
     hourPrice1: PRICE_1,
     hourPrice2: PRICE_2

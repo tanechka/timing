@@ -17,7 +17,7 @@ export default ({
   tags,
   addTagToWork
   }) => (
-  <section className={`${Classes.manual} panel`}>
+  <section className={`${Classes.manual} panel`} style={{borderColor: data.get('color')}}>
     <table className='table'>
       <thead className='panel-heading'>
       <tr>

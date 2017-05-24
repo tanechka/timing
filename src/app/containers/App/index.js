@@ -13,6 +13,7 @@ import * as CalculatorTypes from '../../constants/CalculatorTypes'
 import * as actions from './actions'
 import * as selectors from './selectors'
 import mock from './mock'
+import variables from  '!!sass-variable-loader!app/variables.scss'
 
 RCR.reducers.add(constants.REDUCER_NAME, reducers)
 Array.prototype.push.apply(RCR.middlewares, middlewares);
@@ -22,7 +23,6 @@ const Style = {
     height: '100%'
   },
   content: {
-    background: '#eeeeee',
     marginLeft: 70,
     height: '100%'
   },
@@ -31,7 +31,7 @@ const Style = {
     zIndex: 1000
   },
   header: {
-    background: '#eeeeee',
+    background: variables.backgroundColor,
     position: 'fixed',
     height: 215,
     right: 0,

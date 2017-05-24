@@ -1,3 +1,5 @@
+@import "app/variables";
+
 html,
 body,
 #app,
@@ -10,7 +12,7 @@ body,
 
 body, input {
   font-family: 'PT Sans', sans-serif;
-  background: #eeeeee;
+  background: $background-color;
 }
 
 .pull-left {
@@ -37,6 +39,7 @@ body, input {
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  border-left: 7px solid $background-color;
 
   .panel-heading {
     padding: 10px 15px;

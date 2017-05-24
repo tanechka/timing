@@ -22,7 +22,7 @@ export default ({
   })
 
   return (
-    <section className={`${Classes.percentage} panel`}>
+    <section className={`${Classes.percentage} panel`} style={{borderColor: data.get('color')}}>
       <table className='table'>
         <thead className='panel-heading'>
         <tr>
