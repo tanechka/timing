@@ -27,7 +27,7 @@ export default ({
   updateCalculatorWork,
   tags,
   addTagToWork
-  }) => {
+}) => {
   const hourPrice1 = data.get('hourPrice1') || calculator.get('hourPrice1')
   const hourPrice2 = data.get('hourPrice2') || calculator.get('hourPrice2')
   const count = data.get('count')
@@ -35,7 +35,7 @@ export default ({
 
   if (data.get('tagId')) {
     tagWork = tags.find((tag) => {
-      return data.get('tagId') == tag.get('id')
+      return data.get('tagId') === tag.get('id')
     })
   }
 

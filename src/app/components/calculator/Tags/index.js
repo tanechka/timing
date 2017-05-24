@@ -1,5 +1,5 @@
 import React from 'react'
-import Tag from './tag/Tag'
+import Tag from './Tag'
 import './tags.scss'
 
 export default ({

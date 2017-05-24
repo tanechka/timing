@@ -1,6 +1,6 @@
 import './header.scss'
 import React from 'react'
-import RangeElement from 'app/components/RangeElement'
+import RangeElement from 'app/components/calculator/ComplexityRange'
 import format from 'app/services/format'
 
 export default ({setComplexity, complexity, result}) => {

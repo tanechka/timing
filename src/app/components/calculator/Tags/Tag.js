@@ -6,6 +6,6 @@ export default ({type, count, updateTagCount}) => (
     <span className='title'>C</span>
     <IncrementDecrement
       value={count}
-      onChange={(count) =>  updateTagCount({count})} />
+      onChange={(count) => updateTagCount({count})} />
   </div>
 )

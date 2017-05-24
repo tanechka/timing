@@ -1,11 +1,6 @@
-$background-left-bar: #394e63;
-$grey: #e1e6ec;
+@import "app/variables";
 $text-color-title: #c7cdd3;
 $shadow-color-title: #959a9e;
-$text-color: #4f6173;
-$range-color: #4f6173;
-
-$width-left-bar: 70px;
 
 .calculator-header {
   left: $width-left-bar;
@@ -94,8 +89,8 @@ $width-left-bar: 70px;
   }
 
   .InputRange-slider {
-    background: $range-color;
-    border-color: $range-color;
+    background: $text-color;
+    border-color: $text-color;
   }
 
   .InputRange-track {
