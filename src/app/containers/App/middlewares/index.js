@@ -3,5 +3,5 @@ import localStore from './localStore'
 
 export default [
   calculate,
-  // localStore
+  localStore
 ]

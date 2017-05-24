@@ -29,6 +29,7 @@ export default class RangeElement extends React.Component {
       <InputRange
         maxValue={20}
         minValue={5}
+        formatLabel={value => (value / 10)}
         value={this.state.value}
         onChange={this.handleChange}
       />

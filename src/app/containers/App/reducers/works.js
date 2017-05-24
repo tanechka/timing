@@ -20,7 +20,6 @@ export default function (state, action) {
     }
 
     case ActionTypes.ADD_TAG_TO_WORK: {
-      debugger;
       return state.updateIn(
         [selectors.findIndexById(state, action.id)], work =>
         work.set('tagId', action.tagId)

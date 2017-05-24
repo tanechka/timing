@@ -83,8 +83,14 @@ $width-left-bar: 70px;
     margin-top: 5px;
   }
 
-  .InputRange-labelContainer {
+  .InputRange-label--min, .InputRange-label--max {
     display: none;
+  }
+
+  .InputRange-label--value {
+    top: 1em;
+    color: $text-color;
+    font-family: 'PT Sans', sans-serif;
   }
 
   .InputRange-slider {
