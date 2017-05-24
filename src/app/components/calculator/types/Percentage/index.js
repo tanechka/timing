@@ -49,7 +49,7 @@ export default ({
               onChange={(e, value) => updateCalculator({value})}
             />
           </th>
-          <th>{data.get('hours')}</th>
+          <th><span className="sum">&#931;</span> {format.hours(data.get('hours'))}</th>
           <th>
             <HeaderNumber
               onChange={(e, hourPrice1) => updateCalculator({hourPrice1})}
@@ -62,8 +62,8 @@ export default ({
               value={data.get('hourPrice2')}
             />
           </th>
-          <th>{format.number(data.get('price1'))}</th>
-          <th>{format.number(data.get('price2'))}</th>
+          <th><span className="sum">&#931;</span> {format.number(data.get('price1'))}</th>
+          <th><span className="sum">&#931;</span> {format.number(data.get('price2'))}</th>
         </tr>
         </thead>
         <tbody>

@@ -4,7 +4,7 @@ import * as actions from '../actions'
 import _throttle from 'lodash/throttle'
 import * as selectors from '../selectors'
 
-const throttleCalculate = _throttle(dispatch => dispatch(actions.calculateCalculator()), 200)
+const throttleCalculate = _throttle(dispatch => dispatch(actions.calculateCalculator()), 300)
 
 export default store => next => action => {
   const {dispatch} = store

@@ -3,7 +3,7 @@ import IncrementDecrement from 'app/components/IncrementDecrement'
 
 export default ({type, count, updateTagCount}) => (
   <div className={type}>
-    <span className='title'>C</span>
+    <span className='title'></span>
     <IncrementDecrement
       value={count}
       onChange={(count) => updateTagCount({count})} />
