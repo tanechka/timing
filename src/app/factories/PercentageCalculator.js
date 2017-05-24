@@ -8,6 +8,7 @@ export default function (calc) {
   return {
     ...Calculator(),
     type: PERCENTAGE,
+    name: 'New percentage calculator',
     value: 100,
     calculators: [],
     ...calc

@@ -110,7 +110,7 @@ export default ({
             }
 
             return (
-              <tr>
+              <tr key={calculator.get('id')}>
                 <td><a className="link--close" onClick={ () => {
                   removePercentageCalculator(calculator.get('id'))
                 }}>
@@ -119,8 +119,8 @@ export default ({
                 <td>{calculator.get('hours')}</td>
                 <td>{calculator.get('hourPrice1')}</td>
                 <td>{calculator.get('hourPrice2')}</td>
-                <td>0</td>
-                <td>0</td>
+                <td>-</td>
+                <td>-</td>
               </tr>
             )
           })

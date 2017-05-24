@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RCR from 'react-component-redux'
-import LeftBar from '../../components/LeftBar'
-import Header from '../../components/calculator/Header'
-import Tags from '../../components/calculator/Tags'
-import Manual from '../../components/calculator/types/Manual'
-import Percentage from '../../components/calculator/types/Percentage'
+import LeftBar from 'app/components/LeftBar'
+import Header from 'app/components/calculator/Header'
+import Tags from 'app/components/calculator/Tags'
+import Calculator from 'app/components/calculator/Calculator'
 import reducers from './reducers'
 import middlewares from './middlewares'
 import * as constants from './constants'
-import * as CalculatorTypes from '../../constants/CalculatorTypes'
 import * as actions from './actions'
 import * as selectors from './selectors'
 import mock from './mock'
@@ -43,7 +41,7 @@ const Style = {
   }
 }
 
-class App extends React.Component {
+class App extends React.PureComponent {
   static propTypes = {
     complexity: React.PropTypes.number,
     result: React.PropTypes.object,
@@ -76,15 +74,7 @@ class App extends React.Component {
       calculators,
       setComplexity,
       addCalculator,
-      removeCalculator,
-      updateCalculator,
-      removeCalculatorWork,
-      addCalculatorWork,
-      updateCalculatorWork,
-      addPercentageCalculator,
-      removePercentageCalculator,
-      updateTagCount,
-      addTagToWork
+      updateTagCount
     } = this.props
 
     return (
@@ -101,21 +91,13 @@ class App extends React.Component {
           </div>
           <div style={Style.calculators}>
             {
-              calculators.map((calculator) => {
-                return renderCalculator({
-                  calculators,
-                  calculator,
-                  removeCalculator,
-                  updateCalculator,
-                  removeCalculatorWork,
-                  addCalculatorWork,
-                  updateCalculatorWork,
-                  addPercentageCalculator,
-                  removePercentageCalculator,
-                  tags,
-                  addTagToWork
-                })
-              })
+              calculators.map(calculator => (
+                <Calculator
+                  key={calculator.get('id')}
+                  data={calculator}
+                  {...this.props}
+                />
+              ))
             }
           </div>
 
@@ -123,51 +105,6 @@ class App extends React.Component {
       </div>
     )
   }
-}
-
-function renderCalculator ({
-    calculator,
-    removeCalculator,
-    updateCalculator,
-    addCalculatorWork,
-    removeCalculatorWork,
-    updateCalculatorWork,
-    calculators,
-    addPercentageCalculator,
-    removePercentageCalculator,
-    tags,
-    addTagToWork
-  }) {
-  const id = calculator.get('id')
-  let Calculator
-
-  switch (calculator.get('type')) {
-    case CalculatorTypes.MANUAL: {
-      Calculator = Manual
-      break
-    }
-    case CalculatorTypes.PERCENTAGE: {
-      Calculator = Percentage
-      break
-    }
-  }
-
-  return (
-    <Calculator
-      key={id}
-      data={calculator}
-      removeCalculator={removeCalculator.bind(null, id)}
-      updateCalculator={updateCalculator.bind(null, id)}
-      addCalculatorWork={addCalculatorWork.bind(null, id)}
-      removeCalculatorWork={removeCalculatorWork.bind(null, id)}
-      updateCalculatorWork={updateCalculatorWork.bind(null, id)}
-      calculators={calculators}
-      addPercentageCalculator={addPercentageCalculator.bind(null, id)}
-      removePercentageCalculator={removePercentageCalculator.bind(null, id)}
-      tags={tags}
-      addTagToWork={addTagToWork.bind(null, id)}
-    />
-  )
 }
 
 export default connect(

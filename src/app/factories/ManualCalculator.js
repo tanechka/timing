@@ -7,7 +7,7 @@ calculator[MANUAL] = calculate
 export default function (calc) {
   return {
     ...Calculator(),
-    name: 'Проектирование',
+    name: 'New manual calculator',
     type: MANUAL,
     works: [],
     ...calc
