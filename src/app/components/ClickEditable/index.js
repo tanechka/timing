@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.scss'
-let ContentEditable = require('react-contenteditable')
+import ContentEditable from 'react-contenteditable'
 
 export default class ClickEditable extends React.PureComponent {
   state = {
