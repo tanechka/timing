@@ -17,7 +17,7 @@ export default function (calc) {
 function calculate (calculator, {complexity, tags}) {
   const result = calculator.get('works').reduce((result, work) => {
     const workTagId = work.get('tagId')
-    const tagCount = workTagId ? tags.find(tag => tag.get('id') === workTagId).get('count') : 0
+    const tagCount = workTagId ? parseInt(tags.find(tag => tag.get('id') === workTagId).get('count')) : 0
     const hours = work.get('hours') * (work.get('count') + tagCount) * complexity
 
     result.hours += Math.ceil(hours)
