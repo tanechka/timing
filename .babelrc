@@ -1,0 +1,32 @@
+{
+  "presets": [
+    "react",
+    "stage-1",
+    "latest"
+  ],
+  "plugins": ["transform-class-properties"],
+  "env": {
+    "development": {
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "production": {
+      "presets": [
+        ["latest", {
+          "es2015": {
+            "modules": false
+          }
+        }]
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
+    },
+    "test": {
+    }
+  }
+}
+
